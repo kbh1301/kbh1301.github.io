@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { base } from '$app/paths';
     import { Button } from "$lib/components/ui/button";
     import { MainNav, MobileNav } from "$lib/components";
 </script>
@@ -10,7 +11,7 @@
         <div class="flex flex-1 items-center justify-end">
             <nav class="flex items-center space-x-3.5 mx-3 md:mx-10">
                 <Button
-                    href="/resume_preview"
+                    href="{base}/resume_preview"
                     target="_blank"
                     rel="noopener noreferrer"
                     variant="secondary"

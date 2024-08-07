@@ -1,11 +1,12 @@
 <script lang="ts">
+    import { base } from '$app/paths';
 	import { page } from "$app/stores";
 	import { siteConfig } from "$lib/config/site";
 	import { cn } from "$lib/utils";
 </script>
 
 <div class="hidden md:flex w-full justify-between">
-	<a href="/" class="flex items-center space-x-2">
+	<a href="{base}/" class="flex items-center space-x-2">
 		<span class="hidden text-2xl font-bold sm:inline-block">
 			{siteConfig.name}
 		</span>

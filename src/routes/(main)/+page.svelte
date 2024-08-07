@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { base } from '$app/paths';
     import avi from '$lib/assets/avi.jpg';
     import { Button, SkillBox, ProjectBox } from '$lib/components';
     import Icon from '@iconify/svelte';
@@ -101,7 +102,7 @@
             
             <p class="text-foreground/70 py-3 px-0">{resume.summary}</p>
 
-            <Button class="w-fit" href="#contact" variant="secondary_plus" size="lg">
+            <Button class="w-fit" href="{base}/#contact" variant="secondary_plus" size="lg">
                 <p>Contact Me</p>
                 <Icon height="1.5rem" icon="cil:paper-plane" />
             </Button>
@@ -166,7 +167,7 @@
             </h6>
             <Button
                 class="w-fit"
-                href="/resume_preview"
+                href="{base}/resume_preview"
                 target="_blank"
                 rel="noopener noreferrer"
                 variant="secondary_plus"

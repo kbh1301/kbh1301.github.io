@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { base } from '$app/paths';
 	import * as Sheet from "$lib/components/ui/sheet";
     import Icon from '@iconify/svelte';
 	import { Button } from "$lib/components/ui/button";
@@ -21,7 +22,7 @@
 		</Button>
 	</Sheet.Trigger>
 	<Sheet.Content side="left" class="pr-0">
-		<a href="/" class="flex items-center" on:click={() => (open = false)}>
+		<a href="{base}/" class="flex items-center" on:click={() => (open = false)}>
 			<span class="font-bold">{siteConfig.name}</span>
 		</a>
 		<div class="my-4 h-[calc(100vh-8rem)] pb-10 pl-6 overflow-auto">

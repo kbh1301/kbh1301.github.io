@@ -1,4 +1,6 @@
 // TODO: Update siteConfig
+import { base } from '$app/paths';
+
 export const siteConfig = {
     name: "Kyle Hulvey",
     url: "",
@@ -8,22 +10,22 @@ export const siteConfig = {
     routes: [
         {
             title: "Intro",
-            href: "#intro",
+            href: `${base}/#intro`,
             external: false
         },
         {
             title: "Projects",
-            href: "#projects",
+            href: `${base}/#projects`,
             external: false
         },
         {
             title: "About",
-            href: "#about",
+            href: `${base}/#about`,
             external: false
         },
         {
             title: "Contact",
-            href: "#contact",
+            href: `${base}/#contact`,
             external: false
         },
     ],
