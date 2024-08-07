@@ -6,6 +6,7 @@
 		"dev": "vite dev",
 		"shadcn:add": "npx shadcn-svelte@latest add",
 		"build": "vite build",
+        "deploy": "gh-pages -d build",
 		"preview": "vite preview",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch"
@@ -17,6 +18,7 @@
 		"@sveltejs/vite-plugin-svelte": "^3.0.0",
 		"@tailwindcss/typography": "^0.5.13",
 		"autoprefixer": "^10.4.19",
+		"gh-pages": "^6.1.1",
 		"postcss": "^8.4.38",
 		"svelte": "^4.2.7",
 		"svelte-check": "^3.6.0",
