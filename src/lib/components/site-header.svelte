@@ -17,7 +17,7 @@
                     variant="secondary"
                     size="default"
                 >
-                    <p>Resume</p>
+                    <p>Resume &rarr;</p>
                 </Button>
             </nav>
         </div>

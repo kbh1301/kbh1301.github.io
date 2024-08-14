@@ -15,7 +15,7 @@
 </script>
 
 <Dialog.Portal>
-	<Dialog.Overlay />
+	<!-- <Dialog.Overlay /> -->
 	<DialogPrimitive.Content
 		{transition}
 		{transitionConfig}
