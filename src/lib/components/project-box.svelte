@@ -81,7 +81,7 @@
                     <Carousel.Content>
                         {#each project.images as image}
                             <Carousel.Item>
-                                <button on:click={handleImageResize} class="cursor-zoom-in">
+                                <button on:click={handleImageResize} class="cursor-zoom-in touch-pan-y">
                                     <img src={image} loading="lazy" alt="Demo Screenshot" />
                                 </button>
                             </Carousel.Item>
@@ -153,7 +153,7 @@
         transition:scale={{ duration: 300, easing: cubicOut }}
     >
         <img
-            class="object-contain h-[100%] w-[100%] pointer-events-none touch-pan-y"
+            class="object-contain h-[100%] w-[100%] touch-pan-y"
             src={currentImg}
             alt="Maximized Demo Screenshot"
         />
