@@ -211,4 +211,5 @@
     <meta property="og:description" content={siteConfig.description} />
     <meta property="og:image" content={siteConfig.ogImage} />
     <meta property="og:url" content={siteConfig.url} />
+    <meta name="google-site-verification" content="cMFpjogRB9Y74Ix6vl2zI0CooVAaLEnNVAm-yQubQEc" />
 </svelte:head>
