@@ -4,6 +4,7 @@
     import Icon from '@iconify/svelte';
     import { scale } from 'svelte/transition';
     import { cubicOut } from 'svelte/easing';
+    import { zoomPan } from '$lib/utils/zoomPanAction';
 
     export let project: any;
 
@@ -81,7 +82,7 @@
                     <Carousel.Content>
                         {#each project.images as image}
                             <Carousel.Item>
-                                <button on:click={handleImageResize} class="cursor-zoom-in touch-pan-y">
+                                <button on:click={handleImageResize} class="cursor-zoom-in">
                                     <img src={image} loading="lazy" alt="Demo Screenshot" />
                                 </button>
                             </Carousel.Item>
@@ -153,9 +154,10 @@
         transition:scale={{ duration: 300, easing: cubicOut }}
     >
         <img
-            class="object-contain h-[100%] w-[100%] touch-pan-y"
+            class="object-contain h-[100%] w-[100%]"
             src={currentImg}
             alt="Maximized Demo Screenshot"
+            use:zoomPan
         />
     </button>
 {/if}
