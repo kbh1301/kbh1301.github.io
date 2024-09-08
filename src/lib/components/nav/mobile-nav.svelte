@@ -11,15 +11,17 @@
 	let open = false;
 </script>
 
-<Button variant="icon_secondary" size="icon" href={siteConfig.links.linkedin} title="LinkedIn" target="_blank" rel="noopener noreferrer">
-    <Icon icon="mdi:linkedin" />
-    <span class="sr-only">LinkedIn</span>
-</Button>
+<div class="flex md:hidden">
+    <Button variant="icon_secondary" size="icon" href={siteConfig.links.linkedin} title="LinkedIn" target="_blank" rel="noopener noreferrer">
+        <Icon icon="mdi:linkedin" />
+        <span class="sr-only">LinkedIn</span>
+    </Button>
 
-<Button variant="icon_secondary" size="icon" href={siteConfig.links.github} title="GitHub" target="_blank" rel="noopener noreferrer">
-    <Icon icon="mdi:github" />
-    <span class="sr-only">GitHub</span>
-</Button>
+    <Button variant="icon_secondary" size="icon" href={siteConfig.links.github} title="GitHub" target="_blank" rel="noopener noreferrer">
+        <Icon icon="mdi:github" />
+        <span class="sr-only">GitHub</span>
+    </Button>
+</div>
 
 
 <!-- <Sheet.Root bind:open>
