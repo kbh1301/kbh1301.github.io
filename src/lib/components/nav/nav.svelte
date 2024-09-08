@@ -1,7 +1,8 @@
 <script lang="ts">
     import { base } from '$app/paths';
     import { Button } from "$lib/components/ui/button";
-    import { MainNav, MobileNav } from "$lib/components";
+    import MainNav from './main-nav.svelte';
+    import MobileNav from './mobile-nav.svelte';
 </script>
 
 <header class="supports-[backdrop-filter]:bg-background/80 sticky top-0 z-40 w-full border-b bg-background/95 shadow-2xl backdrop-blur mb-10">
@@ -16,6 +17,7 @@
                     rel="noopener noreferrer"
                     variant="secondary"
                     size="default"
+                    class="kh-shadow-1"
                 >
                     <p>Resume &rarr;</p>
                 </Button>

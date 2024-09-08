@@ -1,6 +1,6 @@
 <script lang="ts">
     import Icon from '@iconify/svelte';
-    import { SiteHeader, Button } from "$lib/components";
+    import { Navbar, Button } from "$lib/components";
     import "$root/app.postcss";
 
     let y: number;
@@ -26,7 +26,7 @@
         </Button>
     </div>
     
-    <SiteHeader />
+    <Navbar />
     <slot />
 </div>
 

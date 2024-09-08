@@ -1,4 +1,3 @@
-export { default as SiteHeader } from "./site-header.svelte";
 export { default as SkillBox } from "./skill-box.svelte";
 export { default as ProjectBox } from "./project-box.svelte";
 export * from "./nav";
