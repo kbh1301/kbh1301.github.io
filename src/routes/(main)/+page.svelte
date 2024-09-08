@@ -203,6 +203,12 @@
     </section>
 </main>
 
+<!-- SEO -->
 <svelte:head>
-	<title>Kyle Hulvey | Portfolio</title>
+	<title>{siteConfig.name} | Portfolio</title>
+    <meta name="description" content={siteConfig.description} />
+    <meta property="og:title" content="{siteConfig.name} | portfolio" />
+    <meta property="og:description" content={siteConfig.description} />
+    <meta property="og:image" content={siteConfig.ogImage} />
+    <meta property="og:url" content={siteConfig.url} />
 </svelte:head>
