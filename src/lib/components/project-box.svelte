@@ -51,7 +51,7 @@
 </script>
 
 <Dialog.Root bind:open={isDialogOpen} closeOnOutsideClick={false}>
-    <Dialog.Close class="cursor-auto">
+    <Dialog.Close class="cursor-auto" aria-label="Close modal">
         <Dialog.Overlay class="bg-black/80" />
     </Dialog.Close>
     <Dialog.Trigger class="flex-1">

@@ -21,6 +21,7 @@
             variant="icon_secondary"
             size="icon"
             on:click={goTop}
+            aria-label="Scroll to top"
         >
             <Icon icon="icon-park-solid:up-c" />
         </Button>
