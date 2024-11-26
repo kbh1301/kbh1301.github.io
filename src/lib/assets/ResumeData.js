@@ -55,7 +55,7 @@ export const resume = {
             ],
         },
     ],
-    employments: [
+    employments_archive: [
         {
             title: "IT Department Intern",
             location: "EnableComp",
@@ -104,12 +104,50 @@ export const resume = {
         {
             title: "Software Developer",
             location: "EnableComp",
-            dates: "Aug 2023 - Present",
-            summary: "Member of core application development team maintaining and improving EnableComp's in-house applications",
+            dates: "Aug 2023 - Sep 2024",
+            summary: "Member of web development team maintaining and improving EnableComp's in-house applications to support processing of healthcare claims.",
             bullets: [
                 "Software development for multiple applications utilizing React, AngularJS, .NET, SQL Server",
                 "Participated in agile scrum sprints using Jira and GitHub",
                 "Maintained automated regression test suite"
+            ],
+        },
+    ],
+    employments: [
+        {
+            title: "Guidewire Developer & Core Application Developer",
+            location: "Farm Bureau TN",
+            dates: "Feb 2020 - May 2022",
+            summary: "Member of software development team supporting the Guidewire Insurance Suite to enable Farm Bureau's insurance processing needs. Pivoted to core application development for in-house applications.",
+            bullets: [
+                "Software development using Java-based Gosu for Guidewire",
+                "Software development for applications utilizing a Java EE, Maven, Spring Framework based tech stack",
+                "Resolved tickets through various means including MySQL database and API call management",
+                "Prevented future tickets by improving quality of code and user validation",
+            ],
+        },
+        {
+            title: "Software QA Engineer & Software Developer",
+            location: "EnableComp",
+            dates: "May 2022 - Sep 2024",
+            summary: "Established frontend automation testing suite for existing in-house software to support processing of complex healthcare claims. Pivoted to web development team to maintain and improve in-house applications.",
+            bullets: [
+                "Stood up automation suite using Playwright framework",
+                "Integrated tests into CI/CD pipeline through GitHub Actions Runner",
+                "Designed and developed automated regression tests",
+                "Software development for multiple applications utilizing React, AngularJS, .NET, SQL Server",
+                "Participated in agile scrum sprints using Jira and GitHub"
+            ],
+        },
+        {
+            title: "Software Developer",
+            location: "ArchimedesRx",
+            dates: "Sep 2024 - Present",
+            summary: "Member of software development team maintaining and developing in-house applications to support pharmacy benefits management.",
+            bullets: [
+                "Developing automation software to handle ETL processing utilizing Python",
+                "Maintaining in-house automation software and web applications utilizing React, C#, SSIS packages",
+                "Supporting various IT operations via database management, FTP server management, etc."
             ],
         },
     ],
