@@ -94,7 +94,7 @@
 
 <main class="flex flex-col flex-1 p-4">
     <!-- SECTION: INTRO -->
-    <section id="intro" class="grid grid-cols-1 lg:grid-cols-2 gap-10 py-8 sm:py-14" bind:this={sections[0]}>
+    <section id="intro" class="grid grid-cols-1 lg:grid-cols-2 gap-10 py-8 sm:py-14 mt-10" bind:this={sections[0]}>
         <!-- INTRO TEXT -->
         <div class="flex flex-col items-center lg:items-start lg:justify-center text-center lg:text-left gap-2">
             <h2 class="font-semibold text-5xl md:text-6xl">Hi, I am <span class="text-primary">Kyle</span></h2>

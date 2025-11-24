@@ -5,7 +5,7 @@
     import MobileNav from './mobile-nav.svelte';
 </script>
 
-<header class="supports-[backdrop-filter]:bg-background/80 sticky top-0 z-40 w-full border-b bg-background/95 shadow-2xl backdrop-blur mb-10">
+<header class="supports-[backdrop-filter]:bg-background/80 sticky top-0 z-40 w-full border-b bg-background/95 shadow-2xl backdrop-blur">
     <div class="flex w-full h-14 items-center px-3 md:px-8 lg:px-20 xl:px-40 2xl:px-60">
         <MainNav />
 		<MobileNav />

@@ -171,10 +171,13 @@
     #r-employment { 
         grid-area: employment;
         margin-left: 20px;
+        box-sizing: border-box;
     }
     .r-content {
         display: grid;
-        grid-template-columns: 1fr auto;
+        grid-template-columns: minmax(2.5in, 1fr) minmax(3in, 2fr);
+        grid-row-gap: 12px;
+        grid-auto-rows: auto;
         grid-template-areas:
             'education employment'
             'skills employment';
