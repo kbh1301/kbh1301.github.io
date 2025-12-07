@@ -37,7 +37,7 @@ export const resume = {
             ],
         },
         {
-            title: "Frontend",
+            title: "Front-end",
             bullets: [
                 "React",
                 "Next.js",
@@ -46,7 +46,7 @@ export const resume = {
             ],
         },
         {
-            title: "Backend",
+            title: "Back-end",
             bullets: [
                 "Node.js",
                 "ASP.NET Core",
@@ -165,10 +165,10 @@ export const resume = {
             dates: "Sep 2024 - Present",
             summary: "",
             bullets: [
-                "Developed and maintained in-house automation software to handle ETL processing, reporting, and analytics utilizing Python and existing C# applications to support pharmacy benefits management.",
-                "Designed and built a full-stack Next.js application to centralize and streamline configuration of complex backend systems. Deployed end-to-end via Azure including environment setup, CI/CD through Azure DevOps, application hosting, and role based authentication via Entra. Enabled cross-team access to tasks previously restricted to IT, reducing ticket volume and improving turnaround time by reducing manual entry errors.",
-                "Handled day-to-day engineering support across database management, SFTP file automation, and internal tooling resolving complex technical issues for multiple departments.",
-                "Coordinated escalations and information hand-offs with the offshore development team.",
+                "Developing and maintaining in-house automation software to handle ETL processing, reporting, and analytics utilizing Python and existing C# applications to support pharmacy benefits management.",
+                "Designed, built, and maintaining a full-stack Next.js application to centralize and streamline configuration of complex backend systems. Deployed end-to-end via Azure including environment setup, CI/CD through Azure DevOps, application hosting, and role based authentication via Entra. Enabled cross-team access to tasks previously restricted to IT, reducing ticket volume and improving turnaround time by reducing manual entry errors.",
+                "Handling day-to-day engineering support across database management, SFTP file automation, and internal tooling resolving complex technical issues for multiple departments.",
+                "Coordinating escalations and information hand-offs with the offshore development team.",
             ],
         },
     ],
