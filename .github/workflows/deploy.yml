@@ -18,7 +18,9 @@ jobs:
           cache: npm
 
       - name: Install dependencies
-        run: npm install
+        run: |
+          npm install
+          npx playwright install chromium
 
       - name: build
         env:
@@ -33,7 +35,7 @@ jobs:
           echo $! > .preview_pid
 
       - name: Wait for preview server
-        run: sleep 10
+        run: sleep 5
 
       - name: Generate PDF
         run: npm run generate:pdf
