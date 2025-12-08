@@ -38,7 +38,10 @@ jobs:
         run: sleep 5
 
       - name: Generate PDF
-        run: npm run generate:pdf
+        run: |
+          npm run generate:pdf
+          mkdir -p build/generated-pdf
+          cp static/generated-pdf/khulvey_resume.pdf build/generated-pdf/
 
       # Stop preview server
       - name: Stop preview server
