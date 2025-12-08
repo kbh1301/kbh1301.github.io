@@ -18,7 +18,9 @@ jobs:
           cache: npm
 
       - name: Install dependencies
-        run: npm install
+        run: |
+          npm install
+          npx playwright install chromium
 
       - name: build
         env:
