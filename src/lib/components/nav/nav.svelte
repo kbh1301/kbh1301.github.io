@@ -12,7 +12,7 @@
         <div class="flex flex-1 items-center justify-end">
             <nav class="flex items-center space-x-3.5 mx-3 md:mx-10">
                 <Button
-                    href="{base}/generated-pdf/khulvey_resume.pdf"
+                    href="/generated-pdf/khulvey_resume.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
                     variant="secondary"
