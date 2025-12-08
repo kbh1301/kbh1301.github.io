@@ -41,7 +41,7 @@ jobs:
         run: |
           npm run generate:pdf
           mkdir -p public/generated-pdf
-          cp artifact/generated-pdf/khulvey_resume.pdf public/generated-pdf/
+          cp static/generated-pdf/khulvey_resume.pdf public/generated-pdf/
 
       # Stop preview server
       - name: Stop preview server
