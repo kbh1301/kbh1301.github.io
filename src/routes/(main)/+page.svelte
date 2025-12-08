@@ -167,7 +167,7 @@
             </h6>
             <Button
                 class="w-fit"
-                href="{base}/resume_preview"
+                href="/generated-pdf/khulvey_resume.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 variant="secondary_plus"

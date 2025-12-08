@@ -26,10 +26,26 @@ jobs:
         run: |
           npm run build
 
+      # Start preview server to generate PDF
+      - name: Start SvelteKit preview server
+        run: |
+          npm run preview -- --port 5173 &
+          echo $! > .preview_pid
+
+      - name: Wait for preview server
+        run: sleep 10
+
+      - name: Generate PDF
+        run: npm run generate:pdf
+
+      # Stop preview server
+      - name: Stop preview server
+        run: kill $(cat .preview_pid) || true
+
       - name: Upload Artifacts
         uses: actions/upload-pages-artifact@v3
         with:
-          # this should match the `pages` option in your adapter-static options
+          # this should match the `pages` option in the adapter-static options
           path: 'build/'
 
   deploy:

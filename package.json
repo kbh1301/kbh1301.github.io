@@ -4,6 +4,7 @@
 	"private": true,
 	"scripts": {
 		"dev": "vite dev --host",
+        "generate:pdf": "node build-scripts/generate-pdf.js",
 		"shadcn:add": "npx shadcn-svelte@latest add",
 		"build": "vite build",
 		"deploy": "npm run build && npx gh-pages -d build -t true",
@@ -19,6 +20,7 @@
 		"@tailwindcss/typography": "^0.5.13",
 		"autoprefixer": "^10.4.19",
 		"gh-pages": "^6.1.1",
+		"playwright": "^1.57.0",
 		"postcss": "^8.4.38",
 		"svelte": "^4.2.7",
 		"svelte-check": "^3.6.0",
