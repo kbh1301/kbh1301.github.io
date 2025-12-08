@@ -4,6 +4,8 @@ import fs from 'fs';
 const URL = "http://localhost:5173/resume_preview";
 const OUTPUT = "static/generated-pdf/khulvey_resume.pdf";
 
+fs.mkdirSync('static/generated-pdf', { recursive: true });
+
 (async () => {
     const browser = await chromium.launch();
     const page = await browser.newPage();
