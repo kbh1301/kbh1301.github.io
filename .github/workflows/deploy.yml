@@ -20,12 +20,6 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: build
-        env:
-          BASE_PATH: '/${{ github.event.repository.name }}'
-        run: |
-          npm run build
-
       # Start preview server to generate PDF
       - name: Start SvelteKit preview server
         run: |
@@ -41,6 +35,12 @@ jobs:
       # Stop preview server
       - name: Stop preview server
         run: kill $(cat .preview_pid) || true
+
+      - name: build
+        env:
+          BASE_PATH: '/${{ github.event.repository.name }}'
+        run: |
+          npm run build
 
       - name: Upload Artifacts
         uses: actions/upload-pages-artifact@v3
