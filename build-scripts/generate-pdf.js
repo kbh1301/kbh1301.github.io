@@ -1,16 +1,16 @@
 import { chromium } from 'playwright';
 import fs from 'fs';
+import path from 'path';
 
-const URL = "http://localhost:5173/resume_preview";
 const OUTPUT = "static/generated-pdf/khulvey_resume.pdf";
-
 fs.mkdirSync('static/generated-pdf', { recursive: true });
+
 
 (async () => {
     const browser = await chromium.launch();
     const page = await browser.newPage();
 
-    await page.goto(URL, { waitUntil: 'networkidle' });
+    await page.goto(`file://${path.resolve()}/build/resume_preview.html`, { waitUntil: 'networkidle' });
 
     const pdf = await page.pdf({
         format: 'Letter',
