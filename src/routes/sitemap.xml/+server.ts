@@ -3,15 +3,10 @@ import type { RequestHandler } from '@sveltejs/kit';
 
 export const prerender = true;
 
-export const GET: RequestHandler = async ({ url }) => {
-	const baseUrl = siteConfig.url;
-	// Extract base path from the sitemap URL (e.g., /kbh1301.github.io from /kbh1301.github.io/sitemap.xml)
-	const pathMatch = url.pathname.match(/^(.+)\/sitemap\.xml$/);
-	const base = pathMatch ? pathMatch[1] : '';
-	
+export const GET: RequestHandler = async () => {
 	const routes = [
 		{
-			url: `${baseUrl}${base}/`,
+			url: `${siteConfig.url}/`, // just the root URL
 			changefreq: 'monthly',
 			priority: 1.0
 		},
@@ -36,4 +31,3 @@ ${routes
 		}
 	});
 };
-
