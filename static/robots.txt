@@ -1,5 +1,5 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://kbh1301.github.io/kbh1301.github.io/sitemap.xml
+Sitemap: https://kbh1301.github.io/sitemap.xml
 
