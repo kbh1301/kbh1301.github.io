@@ -1,6 +1,8 @@
 import { siteConfig } from '$lib/config/site';
 import type { RequestHandler } from '@sveltejs/kit';
 
+export const prerender = true;
+
 export const GET: RequestHandler = async ({ url }) => {
 	const baseUrl = siteConfig.url;
 	// Extract base path from the sitemap URL (e.g., /kbh1301.github.io from /kbh1301.github.io/sitemap.xml)
