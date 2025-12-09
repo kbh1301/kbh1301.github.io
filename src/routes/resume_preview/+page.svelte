@@ -48,8 +48,19 @@
                 {#each resume.skills as skill}
                     <li class="r-subsection">
                         <span class="r-sec-position">{skill.title}</span>
+                        <div>{skill.bullets.join(', ')}</div>
+                    </li>
+                {/each}
+            </ul>
+        </div>
+        <div id="r-projects">
+            <span class="r-sec-title">Personal Projects</span>
+            <ul class="r-sec-list">
+                {#each resume.projects as project}
+                    <li class="r-subsection">
+                        <span class="r-sec-position">{project.title}</span>
                         <ul class="r-sec-desc-list">
-                            {#each skill.bullets as bullet}
+                            {#each project.bullets as bullet}
                                 <li class="r-sec-desc-list-item">{bullet}</li>
                             {/each}
                         </ul>
@@ -122,6 +133,9 @@
     #r-header {
         display: flex;
         justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 10px;
     }
 
     #r-contact {
@@ -154,6 +168,7 @@
     /* content setup */
     #r-education,
     #r-skills,
+    #r-projects,
     #r-employment {
         display: flex;
         flex-direction: column;
@@ -166,7 +181,9 @@
     }
     #r-skills { 
         grid-area: skills; 
-        margin-top: 20px;
+    }
+    #r-projects { 
+        grid-area: projects;
     }
     #r-employment { 
         grid-area: employment;
@@ -176,11 +193,12 @@
     .r-content {
         display: grid;
         grid-template-columns: minmax(2.5in, 1fr) minmax(3in, 2fr);
-        grid-row-gap: 12px;
+        grid-row-gap: 20px;
         grid-auto-rows: auto;
         grid-template-areas:
+            'skills employment'
             'education employment'
-            'skills employment';
+            'projects employment';
     }
 
     .r-sec-title {
@@ -264,7 +282,7 @@
         padding: 10px 10px 0px 10px;
     }
     .r-sec-desc-list {
-        padding: 0 0 0 20px;
+        padding-left: 20px;
     }
 
     .r-sec-desc-list-item {

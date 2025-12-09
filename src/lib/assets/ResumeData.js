@@ -4,26 +4,19 @@ export const resume = {
     link: "kbh1301.github.io",
     email: "kyle.hulvey@gmail.com",
     phone: "(615) 796-0056",
-    summary: "Full-stack engineer with a growing focus on TypeScript, React, and Next.js. Proven ability to build robust internal applications and streamline complex workflows. Now aiming to apply and expand a TypeScript-focused web development skillset in a dedicated engineering role.",
+    summary: "Full-stack engineer specializing in TypeScript, React, and Next.js. I build internal tools that eliminate manual workflows, reduce operational errors, and enable teams to move faster. Experienced owning projects end-to-end across Azure, CI/CD, automation, and backend integrations.",
     educations: [
         {
             title: "AAS in Computer Information Technology, Programming Concentration",
             location: "Columbia State Community College",
-            // dates: "May 2019 - Aug 2020",
-            dates: "",
-            bullets: [
-                "Focus on Java and C# development",
-                "Graduated Magna Cum Laude",
-                "Student representative of 2020 CITC advisory board",
-            ],
-        },
-        {
-            title: "Udemy Certification",
-            location: "The Complete Web Developer in 2021: Zero to Mastery",
-        },
-        {
-            title: "W3Schools Certification",
-            location: "SQL Developer",
+            dates: "May 2019 - Aug 2020",
+            // dates: "",
+            // bullets: [
+            //     "Focus on Java and C# development",
+            //     "Graduated Magna Cum Laude",
+            //     "Student representative of 2020 CITC advisory board",
+            // ],
+            bullets: [],
         },
     ],
     skills: [
@@ -171,5 +164,19 @@ export const resume = {
                 "Coordinating escalations and information hand-offs with the offshore development team.",
             ],
         },
+    ],
+    projects: [
+        {
+            title: "Markdown Editor (SvelteKit + Tauri)",
+            bullets: [
+                "Cross-platform desktop Markdown editor featuring custom CodeMirror extensions, collapsible headings, emoji parsing, table row drag-and-drop, and live compiled preview.",
+            ],
+        },
+        {
+            title: "Google Calendar Automation",
+            bullets: [
+                "Google Apps Script system that generates Google Calendar events from Google Sheets, streamlining schedule creation for a 100+ member local board game organization.",
+            ],
+        }
     ],
 };
