@@ -4,6 +4,7 @@
     import { resume } from '$lib/assets/ResumeData.js';
     import { Button } from '$lib/components';
     import Icon from '@iconify/svelte';
+    import { siteConfig } from "$lib/config/site";
 </script>
 
 <div class="r-page">
@@ -291,7 +292,7 @@
 </style>
 
 <svelte:head>
-    <title>Kyle Hulvey | Resume</title>
+    <title>{siteConfig.name} | Resume</title>
 
     <style>
         html {

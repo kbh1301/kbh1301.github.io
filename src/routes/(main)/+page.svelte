@@ -207,9 +207,42 @@
 <svelte:head>
 	<title>{siteConfig.name} | Portfolio</title>
     <meta name="description" content={siteConfig.description} />
-    <meta property="og:title" content="{siteConfig.name} | portfolio" />
+    <meta name="keywords" content={siteConfig.keywords} />
+    <meta name="author" content={siteConfig.author} />
+    <link rel="canonical" href={siteConfig.url + base} />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content={siteConfig.ogType} />
+    <meta property="og:site_name" content={siteConfig.name} />
+    <meta property="og:title" content="{siteConfig.name} | Portfolio" />
     <meta property="og:description" content={siteConfig.description} />
     <meta property="og:image" content={siteConfig.ogImage} />
-    <meta property="og:url" content={siteConfig.url} />
+    <meta property="og:url" content={siteConfig.url + base} />
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="{siteConfig.name} | Portfolio" />
+    <meta name="twitter:description" content={siteConfig.description} />
+    <meta name="twitter:image" content={siteConfig.ogImage} />
+    
+    <!-- Google Verification -->
     <meta name="google-site-verification" content="cMFpjogRB9Y74Ix6vl2zI0CooVAaLEnNVAm-yQubQEc" />
+    
+    <!-- Structured Data (JSON-LD) -->
+    {@html `<script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "${siteConfig.name}",
+        "url": "${siteConfig.url}",
+        "image": "${siteConfig.ogImage}",
+        "jobTitle": "Full Stack Software Developer",
+        "email": "${siteConfig.authorEmail}",
+        "sameAs": [
+            "${siteConfig.authorLinkedIn}",
+            "${siteConfig.authorGitHub}"
+        ],
+        "description": "${siteConfig.description.replace(/"/g, '\\"').replace(/\n/g, ' ').trim()}"
+    }
+    </script>`}
 </svelte:head>
