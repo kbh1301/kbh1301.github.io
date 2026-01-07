@@ -97,8 +97,8 @@
     <section id="intro" class="grid grid-cols-1 lg:grid-cols-2 gap-10 py-8 sm:py-14 mt-10" bind:this={sections[0]}>
         <!-- INTRO TEXT -->
         <div class="flex flex-col items-center lg:items-start lg:justify-center text-center lg:text-left gap-2">
-            <h2 class="font-semibold text-5xl md:text-6xl">Hi, I am <span class="text-primary">Kyle</span></h2>
-            <h3 class="font-semibold text-lg md:text-xl">Full Stack Software <span class="text-primary">Developer</span></h3>
+            <h1 class="font-semibold text-5xl md:text-6xl">Hi, I am <span class="text-primary">Kyle</span></h1>
+            <h2 class="font-semibold text-lg md:text-xl">Full Stack Software <span class="text-primary">Developer</span></h2>
             
             <p class="text-foreground/70 py-3 px-0">{resume.summary}</p>
 
@@ -127,7 +127,7 @@
                 loading="lazy"
                 src= {aviSrc}
                 on:error={aviFallback}
-                alt="Avatar"
+                alt="Kyle Hulvey - Full Stack Software Developer Portfolio"
             />
         </div>
     </section>
@@ -205,7 +205,7 @@
 
 <!-- SEO -->
 <svelte:head>
-	<title>{siteConfig.name} | Portfolio</title>
+	<title>Kyle Hulvey Portfolio - Full Stack Software Developer</title>
     <meta name="description" content={siteConfig.description} />
     <meta name="keywords" content={siteConfig.keywords} />
     <meta name="author" content={siteConfig.author} />
@@ -213,15 +213,15 @@
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content={siteConfig.ogType} />
-    <meta property="og:site_name" content={siteConfig.name} />
-    <meta property="og:title" content="{siteConfig.name} | Portfolio" />
+    <meta property="og:site_name" content="Kyle Hulvey Portfolio" />
+    <meta property="og:title" content="Kyle Hulvey Portfolio - Full Stack Software Developer" />
     <meta property="og:description" content={siteConfig.description} />
     <meta property="og:image" content={siteConfig.ogImage} />
     <meta property="og:url" content={siteConfig.url + base} />
     
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="{siteConfig.name} | Portfolio" />
+    <meta name="twitter:title" content="Kyle Hulvey Portfolio - Full Stack Software Developer" />
     <meta name="twitter:description" content={siteConfig.description} />
     <meta name="twitter:image" content={siteConfig.ogImage} />
     
@@ -230,19 +230,50 @@
     
     <!-- Structured Data (JSON-LD) -->
     {@html `<script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "Person",
-        "name": "${siteConfig.name}",
-        "url": "${siteConfig.url}",
-        "image": "${siteConfig.ogImage}",
-        "jobTitle": "Full Stack Software Developer",
-        "email": "${siteConfig.authorEmail}",
-        "sameAs": [
-            "${siteConfig.authorLinkedIn}",
-            "${siteConfig.authorGitHub}"
-        ],
-        "description": "${siteConfig.description.replace(/"/g, '\\"').replace(/\n/g, ' ').trim()}"
-    }
+    [
+        {
+            "@context": "https://schema.org",
+            "@type": "Person",
+            "name": "${siteConfig.name}",
+            "url": "${siteConfig.url}",
+            "image": "${siteConfig.ogImage}",
+            "jobTitle": "Full Stack Software Developer",
+            "email": "${siteConfig.authorEmail}",
+            "sameAs": [
+                "${siteConfig.authorLinkedIn}",
+                "${siteConfig.authorGitHub}"
+            ],
+            "description": "${siteConfig.description.replace(/"/g, '\\"').replace(/\n/g, ' ').trim()}",
+            "knowsAbout": [
+                "TypeScript",
+                "React",
+                "Next.js",
+                "SvelteKit",
+                "Full Stack Development",
+                "Software Engineering",
+                "Web Development"
+            ],
+            "hasOccupation": {
+                "@type": "Occupation",
+                "name": "Full Stack Software Developer",
+                "occupationLocation": {
+                    "@type": "Country",
+                    "name": "United States"
+                }
+            }
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            "name": "Kyle Hulvey Portfolio",
+            "url": "${siteConfig.url}",
+            "description": "${siteConfig.description.replace(/"/g, '\\"').replace(/\n/g, ' ').trim()}",
+            "author": {
+                "@type": "Person",
+                "name": "${siteConfig.name}"
+            },
+            "inLanguage": "en-US"
+        }
+    ]
     </script>`}
 </svelte:head>

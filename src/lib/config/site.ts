@@ -11,8 +11,7 @@ export const siteConfig = {
     url: "https://kbh1301.github.io",
     ogImage: "https://avatars.githubusercontent.com/u/83362164",
     description:
-        `Explore Kyle Hulvey's portfolio showcasing innovative web development projects including SvelteKit, TypeScript, and modern UI/UX designs.
-         Discover how he can help bring your digital vision to life with cutting-edge technologies and creative solutions.`,
+        `Kyle Hulvey Portfolio - Full Stack Software Developer specializing in TypeScript, React, and Next.js. Explore projects, skills, and experience in web development, automation, and modern software engineering.`,
     routes: [
         {
             title: "Intro",
@@ -41,7 +40,7 @@ export const siteConfig = {
         repo1: "https://github.com/kbh1301/md-editor",
         repo2: "https://github.com/kbh1301/barbell-calc",
     },
-    keywords: `portfolio, web developer, software engineer, Kyle Hulvey`,
+    keywords: `Kyle Hulvey portfolio, Kyle Hulvey, portfolio, web developer, software engineer, full stack developer, TypeScript developer, React developer, Next.js developer`,
     ogType: "website",
 };
 
