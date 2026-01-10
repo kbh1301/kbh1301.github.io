@@ -97,7 +97,10 @@
     <section id="intro" class="grid grid-cols-1 lg:grid-cols-2 gap-10 py-8 sm:py-14 mt-10" bind:this={sections[0]}>
         <!-- INTRO TEXT -->
         <div class="flex flex-col items-center lg:items-start lg:justify-center text-center lg:text-left gap-2">
-            <h1 class="font-semibold text-5xl md:text-6xl">Hi, I am <span class="text-primary">Kyle</span></h1>
+            <h1 class="font-semibold text-5xl md:text-6xl">
+                Hi, I am <span class="text-primary">Kyle</span>
+                <span class="sr-only">Kyle Hulvey</span>
+            </h1>
             <h2 class="font-semibold text-lg md:text-xl">Full Stack Software <span class="text-primary">Developer</span></h2>
             
             <p class="text-foreground/70 py-3 px-0">{resume.summary}</p>
@@ -209,7 +212,8 @@
     <meta name="description" content={siteConfig.description} />
     <meta name="keywords" content={siteConfig.keywords} />
     <meta name="author" content={siteConfig.author} />
-    <link rel="canonical" href={siteConfig.url + base} />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://kbh1301.github.io/" />
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content={siteConfig.ogType} />
@@ -217,7 +221,7 @@
     <meta property="og:title" content="Kyle Hulvey Portfolio - Full Stack Software Developer" />
     <meta property="og:description" content={siteConfig.description} />
     <meta property="og:image" content={siteConfig.ogImage} />
-    <meta property="og:url" content={siteConfig.url + base} />
+    <meta property="og:url" content="https://kbh1301.github.io/" />
     
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
