@@ -3,15 +3,12 @@
     import avi from '$lib/assets/avi.jpg';
     import { Button, SkillBox, ProjectBox } from '$lib/components';
     import Icon from '@iconify/svelte';
-    import mdeditor1 from '$lib/assets/mdeditor1.jpg';
-    import mdeditor2 from '$lib/assets/mdeditor2.jpg';
-    import mdeditor3 from '$lib/assets/mdeditor3.jpg';
-    import bbcalc1 from '$lib/assets/bbcalc1.jpg';
-    import bbcalc2 from '$lib/assets/bbcalc2.jpg';
     import { onMount } from 'svelte';
     import { pushState } from '$app/navigation';
     import { siteConfig } from "$lib/config/site";
-    import { resume } from '$lib/assets/ResumeData.js';
+    import { resume } from '$lib/data/ResumeData.js';
+    import { projects } from '$lib/data/ProjectsData.js';
+    import { skills } from '$lib/data/SkillsData.js';
 
     let aviSrc = "https://avatars.githubusercontent.com/u/83362164";
     function aviFallback() {aviSrc = avi};
@@ -38,58 +35,6 @@
             sections.forEach(section => observer.unobserve(section));
         };
     });
-
-    const projects = [
-        {
-            title: "Markdown Editor",
-            icon: "fa6-brands:markdown",
-            images: [ mdeditor1, mdeditor2, mdeditor3 ],
-            overview: "Native desktop application for quickly viewing and editing markdown files.",
-            features: [
-                "Fast application launch",
-                "Standalone launch or launch when opening .md files",
-                "Easy to reach Edit toggle",
-                "Instantly viewable changes in preview",
-                "Optional editor toolbar",
-                "Rearrange lines in editor via draggable line numbers",
-                "Simple, clean interface",
-            ],
-            skills: [
-                "Tauri (Rust)",
-                "SvelteKit (TypeScript)",
-                "Shadcn (Tailwind CSS)",
-            ],
-            link: siteConfig.links.repo1
-        },
-        {
-            title: "Barbell Calculator",
-            icon: "tabler:barbell-filled",
-            images: [ bbcalc1, bbcalc2 ],
-            overview: "Based on user input, this application will calculate and display the olympic plates needed for each side of a specific barbell weight setup.",
-            features: [
-                "plate visualization",
-                "'per side' plate details",
-                "toggle button for pounds or kilograms",
-                "rounds user input down to the nearest available plate size",
-                "input validation features",
-            ],
-            skills: [
-                "HTML",
-                "CSS",
-                "JavaScript",
-            ],
-            link: siteConfig.links.repo2
-        }
-    ];
-
-    const skills = [
-        { name: "TypeScript", icon: "devicon-plain:typescript" },
-        { name: "C#", icon: "devicon-plain:csharp" },
-        { name: "SQL", icon: "devicon-plain:sqldeveloper" },
-        { name: "Node.js", icon: "devicon-plain:nodejs-wordmark" },
-        { name: "React", icon: "mdi:react" },
-        { name: "SvelteKit", icon: "devicon-plain:svelte" },
-    ];
 </script>
 
 <main class="flex flex-col flex-1 p-4">

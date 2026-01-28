@@ -1,7 +1,7 @@
 <script lang="ts">
     // TODO: Refactor HTML and CSS structure
 
-    import { resume } from '$lib/assets/ResumeData.js';
+    import { resume } from '$lib/data/ResumeData.js';
     import { Button } from '$lib/components';
     import Icon from '@iconify/svelte';
     import { siteConfig } from "$lib/config/site";

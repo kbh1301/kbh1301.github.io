@@ -133,16 +133,18 @@
                     </ul>
                 </div>
             </div>
-            <div class="flex gap-4">
-                <p>
-                    <strong class="text-lg">Repository:</strong>
-                    <a class="text-primary" target="_blank" href={project.link}>
-                        GitHub<sup><span class="text-xs scale-75 pl-0.5">
-                            <Icon icon="fa6-solid:arrow-up-right-from-square" class="text-xs scale-[75%] inline-block" />
-                        </span></sup>
-                    </a>
-                </p>
-            </div>
+            {#if project.repo}
+                <div class="flex gap-4">
+                    <p>
+                        <strong class="text-lg">Repository:</strong>
+                        <a class="text-primary" target="_blank" href={project.repo}>
+                            GitHub<sup><span class="text-xs scale-75 pl-0.5">
+                                <Icon icon="fa6-solid:arrow-up-right-from-square" class="text-xs scale-[75%] inline-block" />
+                            </span></sup>
+                        </a>
+                    </p>
+                </div>
+            {/if}
         </div>
     </Dialog.Content>
 </Dialog.Root>
