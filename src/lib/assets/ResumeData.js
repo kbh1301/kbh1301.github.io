@@ -4,7 +4,7 @@ export const resume = {
     link: "kbh1301.github.io",
     email: "kyle.hulvey@gmail.com",
     phone: "(615) 796-0056",
-    summary: "Full-stack engineer specializing in TypeScript, React, and Next.js. I build internal tools that eliminate manual workflows, reduce operational errors, and enable teams to move faster. Experienced owning projects end-to-end across Azure, CI/CD, automation, and backend integrations.",
+    summary: "Full-stack software engineer experienced in building tools and systems that eliminate manual workflows, reduce operational errors, and enable teams to move faster. Skilled in end-to-end project ownership, cloud deployments, automation, and database integrations, with strong TypeScript experience.",
     educations: [
         {
             title: "AAS in Computer Information Technology, Programming Concentration",
