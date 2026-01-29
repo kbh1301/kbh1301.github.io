@@ -1,6 +1,7 @@
 export { default as SkillBox } from "./skill-box.svelte";
 export { default as ProjectBox } from "./project-box.svelte";
 export * from "./nav";
+export * from "./footer";
 
 export * as Sheet from "$components/ui/sheet";
 export * as Dialog from "$lib/components/ui/dialog";

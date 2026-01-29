@@ -1,6 +1,6 @@
 <script lang="ts">
     import Icon from '@iconify/svelte';
-    import { Navbar, Button } from "$lib/components";
+    import { Navbar, Button, Footer } from "$lib/components";
     import "$root/app.postcss";
 
     let y: number;
@@ -12,7 +12,7 @@
     }
 </script>
 
-<div class="relative flex flex-col max-w-[1400px] mx-auto w-full text-sm:text-base min-h-screen">
+<div class="relative flex flex-col mx-auto w-full text-sm:text-base min-h-screen">
     <!-- SCROLL TO TOP-->
     <div class={"fixed bottom-0 w-fit duration-200 flex pb-10 pl-10 z-[10] " + (
         y > 0 ? ' opacity-full pointer-events-auto' : ' opacity-0 pointer-events-none'
@@ -29,6 +29,7 @@
     
     <Navbar />
     <slot />
+    <Footer />
 </div>
 
 <svelte:window bind:scrollY={y} bind:innerHeight bind:innerWidth />
