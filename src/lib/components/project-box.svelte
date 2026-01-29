@@ -1,53 +1,14 @@
 <script lang="ts">
-    import { Carousel, Button, Dialog, Separator } from '$lib/components';
-    import type { CarouselAPI } from "$lib/components/ui/carousel/context.js";
+    import {
+        Dialog,
+        Separator,
+        AspectRatio,
+        Badge,
+    } from '$lib/components';
     import Icon from '@iconify/svelte';
-    import { scale } from 'svelte/transition';
-    import { cubicOut } from 'svelte/easing';
-    import { zoomPan } from '$lib/utils/zoomPanAction';
 
     export let project: any;
-
-    let api: CarouselAPI;
-    let current = 0;
-    let count = 0;
-    let canScrollPrev: boolean;
-    let canScrollNext: boolean;
-
-    $: if (api) {
-        count = api.scrollSnapList().length;
-        current = api.selectedScrollSnap() + 1;
-        canScrollPrev = api.canScrollPrev();
-        canScrollNext = api.canScrollNext();
-
-        api.on("select", () => {
-            current = api.selectedScrollSnap() + 1;
-            canScrollPrev = api.canScrollPrev();
-            canScrollNext = api.canScrollNext();
-        });
-    }
-
-    function handlePrev() {
-        api.scrollPrev();
-    }
-
-    function handleNext() {
-        api.scrollNext();
-    }
-
     let isDialogOpen: boolean | undefined = false;
-    let isMaximized = false;
-    let currentImg = '';
-
-    async function handleImageResize() {
-        if (!isMaximized) {
-            isMaximized = true;
-            currentImg = project.images[current - 1];
-        } else {
-            isMaximized = false;
-            currentImg = '';
-        }
-    }
 </script>
 
 <Dialog.Root bind:open={isDialogOpen} closeOnOutsideClick={false}>
@@ -68,98 +29,84 @@
             </div>
         </div>
     </Dialog.Trigger>
-    <Dialog.Content class="max-w-[90vw] h-[90vh] overflow-auto">
-        <Dialog.Header>
-            <Dialog.Title class="flex w-full items-center justify-center text-2xl font-semibold tracking-tight">
+    <Dialog.Content class="w-full max-w-[95vw] sm:max-w-[90vw] lg:max-w-4xl xl:max-w-5xl 2xl:max-w-6xl h-[90vh] overflow-hidden p-0 flex flex-col">
+        <Dialog.Header class="shrink-0 px-6 sm:px-8 md:px-10 lg:px-14 xl:px-20 2xl:px-28 pt-6 sm:pt-8">
+            <Dialog.Title class="flex w-full items-center justify-center text-xl sm:text-2xl font-semibold tracking-tight text-center">
                 {project.title}
             </Dialog.Title>
-            <Separator class="mb-6 mt-5 block h-px bg-muted" />
+            <Separator class="mb-0 mt-4 sm:mt-5 block h-px bg-muted" />
         </Dialog.Header>
-        <div class="flex flex-col items-center gap-10 max-w-[1200px] justify-self-center">
-            <!-- CAROUSEL -->
-            <div class="flex flex-col items-center">
-                <Carousel.Root bind:api class="w-full max-w-[75%] lg:max-w-2xl shadow-2xl">
-                    <Carousel.Content>
-                        {#each project.images as image}
-                            <Carousel.Item>
-                                <button on:click={handleImageResize} class="cursor-zoom-in">
-                                    <img src={image} loading="lazy" alt="Demo Screenshot" />
-                                </button>
-                            </Carousel.Item>
-                        {/each}
-                    </Carousel.Content>
-                </Carousel.Root>
-                <!-- CAROUSEL CONTROLLS -->
-                <div class="flex items-center gap-2 py-2">
-                    <Button
-                        variant="icon_secondary"
-                        size="icon"
-                        disabled={!canScrollPrev}
-                        on:click={handlePrev}
-                    >
-                        <Icon icon="carbon:previous-filled" />
-                    </Button>
+        <div class="overflow-auto flex-1 min-h-0">
+            <div class="flex flex-col items-center gap-10 sm:gap-10 w-full max-w-4xl mx-auto px-6 sm:px-8 md:px-10 lg:px-14 xl:px-20 2xl:px-28 pb-8 sm:pb-10">
+                <!-- Hacky focus solution -->
+                <button tabindex={0} aria-hidden="true" class="sr-only" />
 
-                    <p class="text-muted-foreground text-sm">{current} of {count}</p>
-                    
-                    <Button
-                        variant="icon_secondary"
-                        size="icon"
-                        disabled={!canScrollNext}
-                        on:click={handleNext}
-                    >
-                        <Icon icon="carbon:next-filled" />
-                    </Button>
+                <!-- Main image -->
+                <div class="w-full max-w-2xl mx-auto">
+                    <AspectRatio ratio={16/10} class="bg-muted rounded-2xl sm:rounded-3xl overflow-hidden shadow-lg ring-1 ring-black/5">
+                        <img
+                            src={project.image_main}
+                            alt="Project Screenshot"
+                            class="w-full h-full object-contain"
+                            loading="lazy"
+                        />
+                    </AspectRatio>
                 </div>
-            </div>
-            <div>
-                <p class="mt-2 text-muted-foreground text-xl">{project.overview}</p>
-            </div>
-            <div class="flex flex-col w-full justify-start md:flex-row md:justify-evenly gap-10">
-                <div>
-                    <strong class="text-lg">Features:</strong>
-                    <ul class="mt-2 ml-6 list-disc">
-                        {#each project.features as feature}
-                            <li>{feature}</li>
+
+                <!-- Project overview -->
+                <p class="text-muted-foreground text-base sm:text-lg lg:text-xl leading-relaxed text-center max-w-2xl">
+                    {project.overview}
+                </p>
+
+                <!-- Project features & skills -->
+                <div class="w-full grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 lg:gap-12 max-w-3xl mx-auto">
+                    <div class="text-left">
+                        <h4 class="text-base sm:text-lg font-semibold text-foreground mb-3">Features</h4>
+                        <ul class="space-y-2 text-sm sm:text-base text-muted-foreground list-disc list-inside marker:text-primary/70">
+                            {#each project.features as feature}
+                                <li class="leading-snug">{feature}</li>
+                            {/each}
+                        </ul>
+                    </div>
+                    <div class="text-left">
+                        <h4 class="text-base sm:text-lg font-semibold text-foreground mb-3">Skills</h4>
+                        <div class="flex flex-wrap gap-2">
+                            {#each project.skills as skill}
+                                <Badge variant="secondary" class="text-xs sm:text-sm font-medium">{skill}</Badge>
+                            {/each}
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Additional images -->
+                {#if project.images?.length}
+                    <div class="flex flex-col gap-4 w-full max-w-2xl mx-auto">
+                        {#each project.images as image}
+                            <AspectRatio ratio={16/10} class="bg-muted rounded-2xl sm:rounded-3xl overflow-hidden shadow-lg ring-1 ring-black/5">
+                                <img
+                                    src={image}
+                                    alt="Project Screenshot"
+                                    class="w-full h-full object-contain"
+                                    loading="lazy"
+                                />
+                            </AspectRatio>
                         {/each}
-                    </ul>
-                </div>
-                <div>
-                    <strong class="text-lg">Skills:</strong>
-                    <ul class="mt-2 ml-6 list-disc">
-                        {#each project.skills as skill}
-                            <li>{skill}</li>
-                        {/each}
-                    </ul>
-                </div>
+                    </div>
+                {/if}
+
+                <!-- Repository link -->
+                {#if project.repo}
+                    <div class="pt-2">
+                        <p class="text-sm sm:text-base">
+                            <strong class="text-base sm:text-lg">Repository:</strong>
+                            <a class="text-primary hover:underline ml-1" target="_blank" rel="noopener noreferrer" href={project.repo}>
+                                GitHub
+                                <Icon icon="fa6-solid:arrow-up-right-from-square" class="inline-block w-3.5 h-3.5 ml-0.5 align-baseline" />
+                            </a>
+                        </p>
+                    </div>
+                {/if}
             </div>
-            {#if project.repo}
-                <div class="flex gap-4">
-                    <p>
-                        <strong class="text-lg">Repository:</strong>
-                        <a class="text-primary" target="_blank" href={project.repo}>
-                            GitHub<sup><span class="text-xs scale-75 pl-0.5">
-                                <Icon icon="fa6-solid:arrow-up-right-from-square" class="text-xs scale-[75%] inline-block" />
-                            </span></sup>
-                        </a>
-                    </p>
-                </div>
-            {/if}
         </div>
     </Dialog.Content>
 </Dialog.Root>
-
-{#if isMaximized}
-    <button
-        class="flex inset-0 justify-center items-center bg-black/90 fixed bottom-0 left-0 w-full h-full z-[100] overflow-auto cursor-zoom-out"
-        on:click={handleImageResize}
-        transition:scale={{ duration: 300, easing: cubicOut }}
-    >
-        <img
-            class="object-contain h-[100%] w-[100%]"
-            src={currentImg}
-            alt="Maximized Demo Screenshot"
-            use:zoomPan
-        />
-    </button>
-{/if}

@@ -16,7 +16,8 @@ export const projects = [
     {
         title: "Markdown Editor",
         icon: "fa6-brands:markdown",
-        images: [mdeditor1, mdeditor2, mdeditor3],
+        image_main: mdeditor1,
+        images: [mdeditor2, mdeditor3],
         overview: "Native desktop application for quickly viewing and editing markdown files.",
         features: [
             "Fast application launch",
@@ -37,7 +38,8 @@ export const projects = [
     {
         title: "Google Calendar Automation",
         icon: "ph:calendar-dots-fill",
-        images: [gcalautomation1, gcalautomation2],
+        image_main: gcalautomation1,
+        images: [gcalautomation2],
         overview: "Google Apps Script system that generates Google Calendar events from Google Sheets, streamlining schedule creation for a 100+ member local board game organization.",
         features: [
             "Automated event generation in Google Calendar from Google Sheets data",
@@ -55,14 +57,15 @@ export const projects = [
     {
         title: "Barbell Calculator",
         icon: "tabler:barbell-filled",
-        images: [bbcalc1, bbcalc2],
+        image_main: bbcalc1,
+        images: [bbcalc2],
         overview: "Based on user input, this application will calculate and display the olympic plates needed for each side of a specific barbell weight setup.",
         features: [
-            "plate visualization",
-            "'per side' plate details",
-            "toggle button for pounds or kilograms",
-            "rounds user input down to the nearest available plate size",
-            "input validation features",
+            "Plate visualization",
+            "'Per side' plate details",
+            "Toggle button for pounds or kilograms",
+            "Rounds user input down to the nearest available plate size",
+            "Input validation features",
         ],
         skills: [
             "HTML",
