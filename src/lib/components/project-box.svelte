@@ -115,9 +115,6 @@
         </Dialog.Header>
         <div class="overflow-auto flex-1 min-h-0">
             <div class="flex flex-col items-center gap-10 sm:gap-10 w-full max-w-4xl mx-auto px-6 sm:px-8 md:px-10 lg:px-14 xl:px-20 2xl:px-28 pb-8 sm:pb-10">
-                <!-- Hacky focus solution -->
-                <button tabindex={0} aria-hidden="true" class="sr-only" />
-
                 <div
                     class="pswp-gallery flex flex-col items-center gap-10 sm:gap-10 w-full max-w-4xl mx-auto"
                     bind:this={galleryElement}
