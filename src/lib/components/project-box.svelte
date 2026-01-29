@@ -1,14 +1,53 @@
 <script lang="ts">
-    import {
-        Dialog,
-        Separator,
-        AspectRatio,
-        Badge,
-    } from '$lib/components';
-    import Icon from '@iconify/svelte';
+    import { Dialog, Separator, AspectRatio, Badge } from "$lib/components";
+    import Icon from "@iconify/svelte";
+    import { tick } from "svelte";
+    import PhotoSwipeLightbox from "photoswipe/lightbox";
+    import "photoswipe/style.css";
 
     export let project: any;
     let isDialogOpen: boolean | undefined = false;
+    let galleryElement: HTMLDivElement | undefined;
+    let lightbox: PhotoSwipeLightbox | null = null;
+
+    /** Set data-pswp-width/height on each gallery link from the img's natural dimensions so PhotoSwipe doesn't stretch. */
+    function updateGalleryDimensions(galleryEl: HTMLDivElement) {
+        galleryEl
+            .querySelectorAll<HTMLAnchorElement>("a[data-pswp-width]")
+            .forEach((anchor) => {
+                const img = anchor.querySelector("img");
+                if (!img) return;
+                const setDims = () => {
+                    if (img.naturalWidth && img.naturalHeight) {
+                        anchor.dataset.pswpWidth = String(img.naturalWidth);
+                        anchor.dataset.pswpHeight = String(img.naturalHeight);
+                    }
+                };
+                if (img.complete && img.naturalWidth) {
+                    setDims();
+                } else {
+                    img.addEventListener("load", setDims);
+                }
+            });
+    }
+
+    // Init PhotoSwipe when dialog opens, destroy when it closes
+    $: if (isDialogOpen && galleryElement) {
+        if (!lightbox) {
+            lightbox = new PhotoSwipeLightbox({
+                gallery: galleryElement,
+                children: "a[data-pswp-width]",
+                pswpModule: () => import("photoswipe"),
+            });
+            lightbox.init();
+        }
+        // Update dimensions from actual images (avoids stretching when aspect ratios differ)
+        const el = galleryElement;
+        tick().then(() => el && updateGalleryDimensions(el));
+    } else if (!isDialogOpen && lightbox) {
+        lightbox.destroy();
+        lightbox = null;
+    }
 </script>
 
 <Dialog.Root bind:open={isDialogOpen} closeOnOutsideClick={false}>
@@ -20,7 +59,9 @@
             <div class="bg-background grid place-items-center px-4 text-5xl md:text-6xl -mt-10 sm:-mt-12 md:-mt-14 lg:-mt-16 mx-auto duration-200">
                 <Icon icon={project.icon} />
             </div>
-            <h3 class="font-medium text-xl sm:text-2xl md:text-3xl">{project.title}</h3>
+            <h3 class="font-medium text-xl sm:text-2xl md:text-3xl">
+                {project.title}
+            </h3>
             <p>{project.overview}..</p>
             <div class="flex-1 flex justify-between gap-4 items-end">
                 <div class="ml-auto cursor-pointer hover:text-slate-950 duration-200 relative after:absolute after:top-0 after:right-full after:w-full after:h-full after:duration-200 hover:after:translate-x-full after:z-[-1] after:bg-secondary/60 overflow-hidden">
@@ -41,71 +82,131 @@
                 <!-- Hacky focus solution -->
                 <button tabindex={0} aria-hidden="true" class="sr-only" />
 
-                <!-- Main image -->
-                <div class="w-full max-w-2xl mx-auto">
-                    <AspectRatio ratio={16/10} class="bg-muted rounded-2xl sm:rounded-3xl overflow-hidden shadow-lg ring-1 ring-black/5">
-                        <img
-                            src={project.image_main}
-                            alt="Project Screenshot"
-                            class="w-full h-full object-contain"
-                            loading="lazy"
-                        />
-                    </AspectRatio>
-                </div>
-
-                <!-- Project overview -->
-                <p class="text-muted-foreground text-base sm:text-lg lg:text-xl leading-relaxed text-center max-w-2xl">
-                    {project.overview}
-                </p>
-
-                <!-- Project features & skills -->
-                <div class="w-full grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 lg:gap-12 max-w-3xl mx-auto">
-                    <div class="text-left">
-                        <h4 class="text-base sm:text-lg font-semibold text-foreground mb-3">Features</h4>
-                        <ul class="space-y-2 text-sm sm:text-base text-muted-foreground list-disc list-inside marker:text-primary/70">
-                            {#each project.features as feature}
-                                <li class="leading-snug">{feature}</li>
-                            {/each}
-                        </ul>
-                    </div>
-                    <div class="text-left">
-                        <h4 class="text-base sm:text-lg font-semibold text-foreground mb-3">Skills</h4>
-                        <div class="flex flex-wrap gap-2">
-                            {#each project.skills as skill}
-                                <Badge variant="secondary" class="text-xs sm:text-sm font-medium">{skill}</Badge>
-                            {/each}
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Additional images -->
-                {#if project.images?.length}
-                    <div class="flex flex-col gap-4 w-full max-w-2xl mx-auto">
-                        {#each project.images as image}
-                            <AspectRatio ratio={16/10} class="bg-muted rounded-2xl sm:rounded-3xl overflow-hidden shadow-lg ring-1 ring-black/5">
+                <div
+                    class="pswp-gallery flex flex-col items-center gap-10 sm:gap-10 w-full max-w-4xl mx-auto"
+                    bind:this={galleryElement}
+                >
+                    <!-- Main image -->
+                    <div class="w-full max-w-2xl mx-auto">
+                        <a
+                            href={project.image_main}
+                            data-pswp-width="1920"
+                            data-pswp-height="1200"
+                            class="block w-full cursor-zoom-in"
+                        >
+                            <AspectRatio
+                                ratio={16 / 10}
+                                class="bg-muted rounded-2xl sm:rounded-3xl overflow-hidden shadow-lg ring-1 ring-black/5 group relative"
+                            >
                                 <img
-                                    src={image}
+                                    src={project.image_main}
                                     alt="Project Screenshot"
                                     class="w-full h-full object-contain"
                                     loading="lazy"
                                 />
+                                <span
+                                    class="absolute inset-0 flex items-center justify-center bg-black/0 group-hover:bg-black/20 transition-colors rounded-2xl sm:rounded-3xl"
+                                    aria-hidden="true"
+                                >
+                                    <Icon
+                                        icon="fa6-solid:magnifying-glass-plus"
+                                        class="text-white opacity-0 group-hover:opacity-100 transition-opacity text-3xl drop-shadow-lg"
+                                    />
+                                </span>
                             </AspectRatio>
-                        {/each}
+                        </a>
                     </div>
-                {/if}
 
-                <!-- Repository link -->
-                {#if project.repo}
-                    <div class="pt-2">
-                        <p class="text-sm sm:text-base">
-                            <strong class="text-base sm:text-lg">Repository:</strong>
-                            <a class="text-primary hover:underline ml-1" target="_blank" rel="noopener noreferrer" href={project.repo}>
-                                GitHub
-                                <Icon icon="fa6-solid:arrow-up-right-from-square" class="inline-block w-3.5 h-3.5 ml-0.5 align-baseline" />
-                            </a>
-                        </p>
+                    <!-- Project overview -->
+                    <p class="text-muted-foreground text-base sm:text-lg lg:text-xl leading-relaxed text-center max-w-2xl w-full">
+                        {project.overview}
+                    </p>
+
+                    <!-- Project features & skills -->
+                    <div class="w-full grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 lg:gap-12 max-w-3xl mx-auto">
+                        <div class="text-left">
+                            <h4 class="text-base sm:text-lg font-semibold text-foreground mb-3">
+                                Features
+                            </h4>
+                            <ul class="space-y-2 text-sm sm:text-base text-muted-foreground list-disc list-inside marker:text-primary/70">
+                                {#each project.features as feature}
+                                    <li class="leading-snug">{feature}</li>
+                                {/each}
+                            </ul>
+                        </div>
+                        <div class="text-left">
+                            <h4 class="text-base sm:text-lg font-semibold text-foreground mb-3">
+                                Skills
+                            </h4>
+                            <div class="flex flex-wrap gap-2">
+                                {#each project.skills as skill}
+                                    <Badge
+                                        variant="secondary"
+                                        class="text-xs sm:text-sm font-medium"
+                                    >
+                                        {skill}
+                                    </Badge>
+                                {/each}
+                            </div>
+                        </div>
                     </div>
-                {/if}
+
+                    <!-- Additional images at bottom (same PhotoSwipe group) -->
+                    {#if project.images?.length}
+                        <div class="flex flex-col gap-4 w-full max-w-2xl mx-auto">
+                            {#each project.images as image}
+                                <a
+                                    href={image}
+                                    data-pswp-width="1920"
+                                    data-pswp-height="1200"
+                                    class="block w-full cursor-zoom-in"
+                                >
+                                    <AspectRatio
+                                        ratio={16 / 10}
+                                        class="bg-muted rounded-2xl sm:rounded-3xl overflow-hidden shadow-lg ring-1 ring-black/5 group relative"
+                                    >
+                                        <img
+                                            src={image}
+                                            alt="Project Screenshot"
+                                            class="w-full h-full object-contain"
+                                            loading="lazy"
+                                        />
+                                        <span
+                                            class="absolute inset-0 flex items-center justify-center bg-black/0 group-hover:bg-black/20 transition-colors rounded-2xl sm:rounded-3xl"
+                                            aria-hidden="true"
+                                        >
+                                            <Icon
+                                                icon="fa6-solid:magnifying-glass-plus"
+                                                class="text-white opacity-0 group-hover:opacity-100 transition-opacity text-3xl drop-shadow-lg"
+                                            />
+                                        </span>
+                                    </AspectRatio>
+                                </a>
+                            {/each}
+                        </div>
+                    {/if}
+
+                    <!-- Repository link -->
+                    {#if project.repo}
+                        <div class="pt-2">
+                            <p class="text-sm sm:text-base">
+                                <strong class="text-base sm:text-lg">Repository:</strong>
+                                <a
+                                    class="text-primary hover:underline ml-1"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    href={project.repo}
+                                >
+                                    GitHub
+                                    <Icon
+                                        icon="fa6-solid:arrow-up-right-from-square"
+                                        class="inline-block w-3.5 h-3.5 ml-0.5 align-baseline"
+                                    />
+                                </a>
+                            </p>
+                        </div>
+                    {/if}
+                </div>
             </div>
         </div>
     </Dialog.Content>
