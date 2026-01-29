@@ -6,7 +6,31 @@
     import "photoswipe/style.css";
 
     export let project: any;
+    export let allProjects: any[] = [project];
+    export let currentIndex: number = 0;
+
     let isDialogOpen: boolean | undefined = false;
+    let displayedIndex = 0;
+
+    $: displayedProject = allProjects[displayedIndex] ?? project;
+    $: projectCount = allProjects.length;
+
+    let wasOpen = false;
+    // When modal opens, show this card's project (don't reset when arrows change project)
+    $: if (isDialogOpen && !wasOpen) {
+        displayedIndex = currentIndex;
+        wasOpen = true;
+    }
+    $: if (!isDialogOpen) {
+        wasOpen = false;
+    }
+
+    function goPrev() {
+        displayedIndex = (displayedIndex - 1 + projectCount) % projectCount;
+    }
+    function goNext() {
+        displayedIndex = (displayedIndex + 1) % projectCount;
+    }
     let galleryElement: HTMLDivElement | undefined;
     let lightbox: PhotoSwipeLightbox | null = null;
 
@@ -48,6 +72,12 @@
         lightbox.destroy();
         lightbox = null;
     }
+
+    // Refresh gallery dimensions when cycling to another project
+    $: if (isDialogOpen && galleryElement && displayedProject) {
+        const el = galleryElement;
+        tick().then(() => el && updateGalleryDimensions(el));
+    }
 </script>
 
 <Dialog.Root bind:open={isDialogOpen} closeOnOutsideClick={false}>
@@ -70,12 +100,38 @@
             </div>
         </div>
     </Dialog.Trigger>
-    <Dialog.Content class="w-full max-w-[95vw] sm:max-w-[90vw] lg:max-w-4xl xl:max-w-5xl 2xl:max-w-6xl h-[90vh] overflow-hidden p-0 flex flex-col">
-        <Dialog.Header class="shrink-0 px-6 sm:px-8 md:px-10 lg:px-14 xl:px-20 2xl:px-28 pt-6 sm:pt-8">
-            <Dialog.Title class="flex w-full items-center justify-center text-xl sm:text-2xl font-semibold tracking-tight text-center">
-                {project.title}
-            </Dialog.Title>
-            <Separator class="mb-0 mt-4 sm:mt-5 block h-px bg-muted" />
+    <Dialog.Content class="w-full max-w-[95vw] sm:max-w-[90vw] lg:max-w-4xl xl:max-w-5xl 2xl:max-w-6xl h-[90vh] overflow-hidden p-0 flex flex-col [&>*:last-child]:hidden">
+        <Dialog.Header class="relative shrink-0 px-4 sm:px-6 md:px-8 py-3 sm:py-4 flex flex-col">
+            <Dialog.Close
+                class="absolute right-2 top-2 sm:right-3 sm:top-3 rounded-md p-1.5 sm:p-2 text-muted-foreground hover:bg-muted hover:text-foreground focus:outline-none transition-colors touch-manipulation min-w-[2.25rem] min-h-[2.25rem] sm:min-w-[2.5rem] sm:min-h-[2.5rem] flex items-center justify-center"
+                aria-label="Close"
+            >
+                <Icon icon="fa6-solid:xmark" class="text-base sm:text-lg" />
+            </Dialog.Close>
+            <div class="flex w-full items-center justify-between gap-1 sm:gap-2">
+                <div class="w-9 shrink-0 sm:w-10" aria-hidden="true"></div>
+                <button
+                    type="button"
+                    class="shrink-0 rounded-md p-1.5 sm:p-2 text-foreground hover:bg-muted hover:text-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 touch-manipulation min-w-[2.25rem] min-h-[2.25rem] sm:min-w-[2.5rem] sm:min-h-[2.5rem] flex items-center justify-center"
+                    aria-label="Previous project"
+                    on:click={goPrev}
+                >
+                    <Icon icon="fa6-solid:chevron-left" class="text-lg sm:text-xl" />
+                </button>
+                <Dialog.Title class="flex-1 min-w-0 text-lg sm:text-xl md:text-2xl font-semibold tracking-tight text-center px-1 truncate">
+                    {displayedProject.title}
+                </Dialog.Title>
+                <button
+                    type="button"
+                    class="shrink-0 rounded-md p-1.5 sm:p-2 text-foreground hover:bg-muted hover:text-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 touch-manipulation min-w-[2.25rem] min-h-[2.25rem] sm:min-w-[2.5rem] sm:min-h-[2.5rem] flex items-center justify-center"
+                    aria-label="Next project"
+                    on:click={goNext}
+                >
+                    <Icon icon="fa6-solid:chevron-right" class="text-lg sm:text-xl" />
+                </button>
+                <div class="w-9 shrink-0 sm:w-10" aria-hidden="true"></div>
+            </div>
+            <Separator class="mb-0 mt-2 sm:mt-3 block h-px bg-muted" />
         </Dialog.Header>
         <div class="overflow-auto flex-1 min-h-0">
             <div class="flex flex-col items-center gap-10 sm:gap-10 w-full max-w-4xl mx-auto px-6 sm:px-8 md:px-10 lg:px-14 xl:px-20 2xl:px-28 pb-8 sm:pb-10">
@@ -88,7 +144,7 @@
                 >
                     <!-- Main image -->
                     <a
-                        href={project.image_main}
+                        href={displayedProject.image_main}
                         data-pswp-width="1920"
                         data-pswp-height="1200"
                         class="block w-full max-w-2xl mx-auto cursor-zoom-in"
@@ -98,7 +154,7 @@
                             class="bg-muted rounded-2xl sm:rounded-3xl overflow-hidden shadow-lg ring-1 ring-black/5 group relative"
                         >
                             <img
-                                src={project.image_main}
+                                src={displayedProject.image_main}
                                 alt="Project Screenshot"
                                 class="w-full h-full object-contain"
                                 loading="lazy"
@@ -117,7 +173,7 @@
 
                     <!-- Project overview -->
                     <p class="text-muted-foreground text-base sm:text-lg lg:text-xl leading-relaxed text-center max-w-2xl w-full">
-                        {project.overview}
+                        {displayedProject.overview}
                     </p>
 
                     <!-- Project features & skills -->
@@ -127,7 +183,7 @@
                                 Features
                             </h4>
                             <ul class="space-y-2 text-sm sm:text-base text-muted-foreground list-disc list-inside marker:text-primary/70">
-                                {#each project.features as feature}
+                                {#each displayedProject.features as feature}
                                     <li class="leading-snug">{feature}</li>
                                 {/each}
                             </ul>
@@ -137,7 +193,7 @@
                                 Skills
                             </h4>
                             <div class="flex flex-wrap gap-2">
-                                {#each project.skills as skill}
+                                {#each displayedProject.skills as skill}
                                     <Badge
                                         variant="secondary"
                                         class="text-xs sm:text-sm font-medium"
@@ -150,9 +206,9 @@
                     </div>
 
                     <!-- Additional images at bottom (same PhotoSwipe group) -->
-                    {#if project.images?.length}
+                    {#if displayedProject.images?.length}
                         <div class="flex flex-col gap-4 w-full max-w-2xl mx-auto">
-                            {#each project.images as image}
+                            {#each displayedProject.images as image}
                                 <a
                                     href={image}
                                     data-pswp-width="1920"
@@ -185,14 +241,14 @@
                     {/if}
 
                     <!-- Repository link -->
-                    {#if project.repo}
+                    {#if displayedProject.repo}
                         <p class="pt-2 text-sm sm:text-base">
                             <strong class="text-base sm:text-lg">Repository:</strong>
                             <a
                                 class="text-primary hover:underline ml-1"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                href={project.repo}
+                                href={displayedProject.repo}
                             >
                                 GitHub
                                 <Icon

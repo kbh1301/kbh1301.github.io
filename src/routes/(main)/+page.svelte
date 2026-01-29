@@ -90,8 +90,8 @@
             </h3>
         </div>
         <div class="flex flex-wrap flex-col lg:flex-row justify-center gap-12 lg:gap-10">
-            {#each projects as project}
-                <ProjectBox {project} />
+            {#each projects as project, i}
+                <ProjectBox {project} allProjects={projects} currentIndex={i} />
             {/each}
         </div>
     </section>
