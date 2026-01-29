@@ -63,10 +63,8 @@
                 {project.title}
             </h3>
             <p>{project.overview}..</p>
-            <div class="flex-1 flex justify-between gap-4 items-end">
-                <div class="ml-auto cursor-pointer hover:text-slate-950 duration-200 relative after:absolute after:top-0 after:right-full after:w-full after:h-full after:duration-200 hover:after:translate-x-full after:z-[-1] after:bg-secondary/60 overflow-hidden">
-                    <p class="relative z-4 px-2">See more &rarr;</p>
-                </div>
+            <div class="flex-1 flex justify-end items-end cursor-pointer hover:text-slate-950 duration-200 relative after:absolute after:top-0 after:right-full after:w-full after:h-full after:duration-200 hover:after:translate-x-full after:z-[-1] after:bg-secondary/60 overflow-hidden">
+                <p class="relative z-4 px-2">See more &rarr;</p>
             </div>
         </div>
     </Dialog.Trigger>
@@ -87,35 +85,33 @@
                     bind:this={galleryElement}
                 >
                     <!-- Main image -->
-                    <div class="w-full max-w-2xl mx-auto">
-                        <a
-                            href={project.image_main}
-                            data-pswp-width="1920"
-                            data-pswp-height="1200"
-                            class="block w-full cursor-zoom-in"
+                    <a
+                        href={project.image_main}
+                        data-pswp-width="1920"
+                        data-pswp-height="1200"
+                        class="block w-full max-w-2xl mx-auto cursor-zoom-in"
+                    >
+                        <AspectRatio
+                            ratio={16 / 10}
+                            class="bg-muted rounded-2xl sm:rounded-3xl overflow-hidden shadow-lg ring-1 ring-black/5 group relative"
                         >
-                            <AspectRatio
-                                ratio={16 / 10}
-                                class="bg-muted rounded-2xl sm:rounded-3xl overflow-hidden shadow-lg ring-1 ring-black/5 group relative"
+                            <img
+                                src={project.image_main}
+                                alt="Project Screenshot"
+                                class="w-full h-full object-contain"
+                                loading="lazy"
+                            />
+                            <span
+                                class="absolute inset-0 flex items-center justify-center bg-black/0 group-hover:bg-black/20 transition-colors rounded-2xl sm:rounded-3xl"
+                                aria-hidden="true"
                             >
-                                <img
-                                    src={project.image_main}
-                                    alt="Project Screenshot"
-                                    class="w-full h-full object-contain"
-                                    loading="lazy"
+                                <Icon
+                                    icon="fa6-solid:magnifying-glass-plus"
+                                    class="text-white opacity-0 group-hover:opacity-100 transition-opacity text-3xl drop-shadow-lg"
                                 />
-                                <span
-                                    class="absolute inset-0 flex items-center justify-center bg-black/0 group-hover:bg-black/20 transition-colors rounded-2xl sm:rounded-3xl"
-                                    aria-hidden="true"
-                                >
-                                    <Icon
-                                        icon="fa6-solid:magnifying-glass-plus"
-                                        class="text-white opacity-0 group-hover:opacity-100 transition-opacity text-3xl drop-shadow-lg"
-                                    />
-                                </span>
-                            </AspectRatio>
-                        </a>
-                    </div>
+                            </span>
+                        </AspectRatio>
+                    </a>
 
                     <!-- Project overview -->
                     <p class="text-muted-foreground text-base sm:text-lg lg:text-xl leading-relaxed text-center max-w-2xl w-full">
@@ -188,23 +184,21 @@
 
                     <!-- Repository link -->
                     {#if project.repo}
-                        <div class="pt-2">
-                            <p class="text-sm sm:text-base">
-                                <strong class="text-base sm:text-lg">Repository:</strong>
-                                <a
-                                    class="text-primary hover:underline ml-1"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    href={project.repo}
-                                >
-                                    GitHub
-                                    <Icon
-                                        icon="fa6-solid:arrow-up-right-from-square"
-                                        class="inline-block w-3.5 h-3.5 ml-0.5 align-baseline"
-                                    />
-                                </a>
-                            </p>
-                        </div>
+                        <p class="pt-2 text-sm sm:text-base">
+                            <strong class="text-base sm:text-lg">Repository:</strong>
+                            <a
+                                class="text-primary hover:underline ml-1"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                href={project.repo}
+                            >
+                                GitHub
+                                <Icon
+                                    icon="fa6-solid:arrow-up-right-from-square"
+                                    class="inline-block w-3.5 h-3.5 ml-0.5 align-baseline"
+                                />
+                            </a>
+                        </p>
                     {/if}
                 </div>
             </div>
