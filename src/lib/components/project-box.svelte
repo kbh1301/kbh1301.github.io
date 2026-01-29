@@ -1,7 +1,6 @@
 <script lang="ts">
     import { Dialog, Separator, AspectRatio, Badge } from "$lib/components";
     import Icon from "@iconify/svelte";
-    import { tick } from "svelte";
     import PhotoSwipeLightbox from "photoswipe/lightbox";
     import "photoswipe/style.css";
 
@@ -34,27 +33,6 @@
     let galleryElement: HTMLDivElement | undefined;
     let lightbox: PhotoSwipeLightbox | null = null;
 
-    /** Set data-pswp-width/height on each gallery link from the img's natural dimensions so PhotoSwipe doesn't stretch. */
-    function updateGalleryDimensions(galleryEl: HTMLDivElement) {
-        galleryEl
-            .querySelectorAll<HTMLAnchorElement>("a[data-pswp-width]")
-            .forEach((anchor) => {
-                const img = anchor.querySelector("img");
-                if (!img) return;
-                const setDims = () => {
-                    if (img.naturalWidth && img.naturalHeight) {
-                        anchor.dataset.pswpWidth = String(img.naturalWidth);
-                        anchor.dataset.pswpHeight = String(img.naturalHeight);
-                    }
-                };
-                if (img.complete && img.naturalWidth) {
-                    setDims();
-                } else {
-                    img.addEventListener("load", setDims);
-                }
-            });
-    }
-
     // Init PhotoSwipe when dialog opens, destroy when it closes
     $: if (isDialogOpen && galleryElement) {
         if (!lightbox) {
@@ -63,20 +41,22 @@
                 children: "a[data-pswp-width]",
                 pswpModule: () => import("photoswipe"),
             });
+            // Use PhotoSwipe's domItemData filter to get dimensions from the img so aspect ratio is correct
+            lightbox.addFilter("domItemData", (itemData: any, _element: HTMLElement, linkEl: HTMLAnchorElement) => {
+                const img = linkEl?.querySelector("img");
+                if (img?.naturalWidth && img?.naturalHeight) {
+                    itemData.w = img.naturalWidth;
+                    itemData.h = img.naturalHeight;
+                    itemData.width = itemData.w;
+                    itemData.height = itemData.h;
+                }
+                return itemData;
+            });
             lightbox.init();
         }
-        // Update dimensions from actual images (avoids stretching when aspect ratios differ)
-        const el = galleryElement;
-        tick().then(() => el && updateGalleryDimensions(el));
     } else if (!isDialogOpen && lightbox) {
         lightbox.destroy();
         lightbox = null;
-    }
-
-    // Refresh gallery dimensions when cycling to another project
-    $: if (isDialogOpen && galleryElement && displayedProject) {
-        const el = galleryElement;
-        tick().then(() => el && updateGalleryDimensions(el));
     }
 </script>
 
