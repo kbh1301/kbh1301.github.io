@@ -124,7 +124,7 @@
                         href={displayedProject.image_main}
                         data-pswp-width="1920"
                         data-pswp-height="1200"
-                        class="block w-full max-w-2xl mx-auto cursor-zoom-in"
+                        class="block w-full max-w-2xl mx-auto"
                     >
                         <AspectRatio
                             ratio={16 / 10}
@@ -136,15 +136,6 @@
                                 class="w-full h-full object-contain"
                                 loading="lazy"
                             />
-                            <span
-                                class="absolute inset-0 flex items-center justify-center bg-black/0 group-hover:bg-black/20 transition-colors rounded-2xl sm:rounded-3xl"
-                                aria-hidden="true"
-                            >
-                                <Icon
-                                    icon="fa6-solid:magnifying-glass-plus"
-                                    class="text-white opacity-0 group-hover:opacity-100 transition-opacity text-3xl drop-shadow-lg"
-                                />
-                            </span>
                         </AspectRatio>
                     </a>
 
@@ -190,7 +181,7 @@
                                     href={image}
                                     data-pswp-width="1920"
                                     data-pswp-height="1200"
-                                    class="block w-full cursor-zoom-in"
+                                    class="block w-full"
                                 >
                                     <AspectRatio
                                         ratio={16 / 10}
@@ -202,15 +193,6 @@
                                             class="w-full h-full object-contain"
                                             loading="lazy"
                                         />
-                                        <span
-                                            class="absolute inset-0 flex items-center justify-center bg-black/0 group-hover:bg-black/20 transition-colors rounded-2xl sm:rounded-3xl"
-                                            aria-hidden="true"
-                                        >
-                                            <Icon
-                                                icon="fa6-solid:magnifying-glass-plus"
-                                                class="text-white opacity-0 group-hover:opacity-100 transition-opacity text-3xl drop-shadow-lg"
-                                            />
-                                        </span>
                                     </AspectRatio>
                                 </a>
                             {/each}
