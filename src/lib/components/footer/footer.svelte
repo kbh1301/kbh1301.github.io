@@ -133,7 +133,7 @@
 				</a>
 				&nbsp;&middot;&nbsp;
 				<a
-					href="{base}/#intro"
+					href="{base}/"
 					class="text-primary transition-colors hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-sm"
 				>
 					Back to top

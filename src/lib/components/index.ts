@@ -1,5 +1,6 @@
 export { default as SkillBox } from "./skill-box.svelte";
 export { default as ProjectBox } from "./project-box.svelte";
+export { default as LightSwitch } from "./light-switch.svelte";
 export * from "./nav";
 export * from "./footer";
 

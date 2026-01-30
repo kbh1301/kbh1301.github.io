@@ -1,6 +1,6 @@
 <script lang="ts">
     import { base } from '$app/paths';
-    import { Button } from "$lib/components/ui/button";
+    import { Button, LightSwitch } from "$lib/components";
     import MainNav from './main-nav.svelte';
     import MobileNav from './mobile-nav.svelte';
 </script>
@@ -21,6 +21,7 @@
                 >
                     <p>Resume &rarr;</p>
                 </Button>
+                <LightSwitch />
             </nav>
         </div>
     </div>

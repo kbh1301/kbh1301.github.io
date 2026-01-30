@@ -60,3 +60,7 @@ export const flyAndScale = (
 		easing: cubicOut
 	};
 };
+
+export function goTop() {
+    document.body.scrollIntoView();
+}

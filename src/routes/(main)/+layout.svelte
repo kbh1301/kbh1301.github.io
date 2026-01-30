@@ -1,15 +1,12 @@
 <script lang="ts">
     import Icon from '@iconify/svelte';
     import { Navbar, Button, Footer } from "$lib/components";
+    import { goTop } from "$lib/utils";
     import "$root/app.postcss";
 
     let y: number;
     let innerHeight = 0;
     let innerWidth = 0;
-
-    function goTop() {
-        document.body.scrollIntoView();
-    }
 </script>
 
 <div class="relative flex flex-col mx-auto w-full text-sm:text-base min-h-screen">
