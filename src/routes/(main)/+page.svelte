@@ -1,7 +1,7 @@
 <script lang="ts">
     import { base } from '$app/paths';
     import avi from '$lib/assets/avi.jpg';
-    import { Button, SkillBox, ProjectBox } from '$lib/components';
+    import { Button, SkillBox, ProjectBox } from '$components';
     import Icon from '@iconify/svelte';
     import { onMount } from 'svelte';
     import { pushState } from '$app/navigation';

@@ -1,6 +1,6 @@
 <script lang="ts">
     import Icon from '@iconify/svelte';
-    import { Navbar, Button, Footer } from "$lib/components";
+    import { Navbar, Button, Footer } from "$components";
     import { goTop } from "$lib/utils";
     import "$root/app.postcss";
 

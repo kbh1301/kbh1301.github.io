@@ -1,8 +1,7 @@
 <script lang="ts">
     import { base } from '$app/paths';
-	import * as Sheet from "$lib/components/ui/sheet";
+    import { Sheet, Button } from "$components";
     import Icon from '@iconify/svelte';
-	import { Button } from "$lib/components/ui/button";
 	import { siteConfig } from "$lib/config/site";
     import { page } from "$app/stores";
     import { cn } from "$lib/utils";

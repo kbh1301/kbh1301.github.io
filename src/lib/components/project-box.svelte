@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { Dialog, Separator, AspectRatio, Badge } from "$lib/components";
+    import { Dialog, Separator, AspectRatio, Badge } from "$components";
     import Icon from "@iconify/svelte";
     import PhotoSwipeLightbox from "photoswipe/lightbox";
     import "photoswipe/style.css";

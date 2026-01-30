@@ -1,8 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
     import Icon from "@iconify/svelte";
-	import { Popover, PopoverTrigger, PopoverContent } from '$lib/components/ui/popover';
-	import { Button } from '$lib/components/ui/button';
+	import { Popover, PopoverTrigger, PopoverContent, Button } from '$components';
 	import { cn } from '$lib/utils';
 
 	type Theme = 'light' | 'dark' | 'system';

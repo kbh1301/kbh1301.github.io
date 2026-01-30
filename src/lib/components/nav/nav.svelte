@@ -1,6 +1,6 @@
 <script lang="ts">
     import { base } from '$app/paths';
-    import { Button, LightSwitch } from "$lib/components";
+    import { Button, LightSwitch } from "$components";
     import MainNav from './main-nav.svelte';
     import MobileNav from './mobile-nav.svelte';
 </script>

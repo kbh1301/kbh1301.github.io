@@ -2,7 +2,7 @@
     // TODO: Refactor HTML and CSS structure
 
     import { resume } from '$lib/data/ResumeData.js';
-    import { Button } from '$lib/components';
+    import { Button } from '$components';
     import Icon from '@iconify/svelte';
     import { siteConfig } from "$lib/config/site";
 </script>

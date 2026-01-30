@@ -7,7 +7,7 @@
 		"baseColor": "stone"
 	},
 	"aliases": {
-		"components": "$lib/components",
+		"components": "$components/shadcn-ui",
 		"utils": "$lib/utils"
 	},
 	"typescript": true
