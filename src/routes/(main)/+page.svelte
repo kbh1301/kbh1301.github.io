@@ -127,7 +127,7 @@
         </div>
     </section>
     <!-- SECTION: CONTACT -->
-    <section id="contact" class="flex flex-col gap-4 justify-center items-center py-20 bg-muted border-t-2 border-secondary" bind:this={sections[3]}>
+    <section id="contact" class="flex flex-col gap-4 justify-center items-center py-20 bg-muted border-t-2 border-secondary rounded-b-2xl" bind:this={sections[3]}>
         <h6 class="text-lg sm:text-xl md:text-2xl pb-10">
             Connect with me &darr;
         </h6>
