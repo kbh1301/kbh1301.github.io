@@ -1,10 +1,10 @@
 <script lang="ts">
+    import { writable } from 'svelte/store';
     import { base } from '$app/paths';
     import avi from '$lib/assets/avi.jpg';
     import { Button, SkillBox, ProjectBox } from '$components';
     import Icon from '@iconify/svelte';
     import { onMount } from 'svelte';
-    import { pushState } from '$app/navigation';
     import { siteConfig } from "$lib/config/site";
     import { resume } from '$lib/data/ResumeData.js';
     import { projects } from '$lib/data/ProjectsData.js';
@@ -14,26 +14,27 @@
     function aviFallback() {aviSrc = avi};
 
     let sections: HTMLElement[] = [];
+    export const activeSection = writable<string>('intro');
 
     onMount(() => {
-        // Handle navigation during scrolling
+        // Handle active section during scrolling
         const observer = new IntersectionObserver(
             (entries) => {
                 entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    pushState(`#${entry.target.id}`, {
-                        hash: `#${entry.target.id}`
-                    });
-                }
+                    if (entry.isIntersecting) {
+                        activeSection.set(entry.target.id);
+                        }
                 });
-            },{ threshold: 0.5 }
+            },
+            {
+                threshold: 0,
+                rootMargin: '-20% 0px -70% 0px'
+            }
         );
 
-        sections.forEach(section => observer.observe(section));
+        sections.forEach(s => observer.observe(s));
 
-        return () => {
-            sections.forEach(section => observer.unobserve(section));
-        };
+        return () => sections.forEach(s => observer.unobserve(s));
     });
 </script>
 
