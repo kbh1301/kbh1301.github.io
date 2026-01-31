@@ -1,6 +1,5 @@
 <script lang="ts">
     import { base } from '$app/paths';
-	import { page } from "$app/stores";
 	import { activeSection } from "$lib/stores";
 	import { siteConfig } from "$lib/config/site";
 	import { cn } from "$lib/utils";
@@ -18,7 +17,7 @@
 				href={navItem.href}
 				class={cn(
 					"py-1 transition-colors hover:text-primary",
-					activeSection?.toLowerCase() === navItem.title.toLowerCase()
+					$activeSection?.toLowerCase() === navItem.title.toLowerCase()
 						? "text-primary border-t-2 border-primary"
 						: "text-foreground"
 				)}
