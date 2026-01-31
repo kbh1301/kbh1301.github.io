@@ -39,7 +39,7 @@
 
 <main class="flex flex-col flex-1 p-4 max-w-[1400px] mx-auto w-full">
     <!-- SECTION: INTRO -->
-    <section id="intro" class="grid grid-cols-1 lg:grid-cols-2 gap-10 py-8 sm:py-14 mt-10" bind:this={sections[0]}>
+    <section id="intro" class="scroll-mt-24 grid grid-cols-1 lg:grid-cols-2 gap-10 py-8 sm:py-14 mt-10" bind:this={sections[0]}>
         <!-- INTRO TEXT -->
         <div class="flex flex-col items-center lg:items-start lg:justify-center text-center lg:text-left gap-2">
             <h1 class="font-semibold text-5xl md:text-6xl">
@@ -80,7 +80,7 @@
         </div>
     </section>
     <!-- SECTION: PROJECTS -->
-    <section id="projects" class="py-20 lg:py-32 flex flex-col gap-24" bind:this={sections[1]}>
+    <section id="projects" class="scroll-mt-24 py-20 lg:py-32 flex flex-col gap-24" bind:this={sections[1]}>
         <div class="flex flex-col gap-2 text-center">
             <h6 class="text-lg sm:text-xl md:text-2xl">
                 A few of my projects.
@@ -96,7 +96,7 @@
         </div>
     </section>
     <!-- SECTION: ABOUT -->
-    <section id="about" class="flex flex-col gap-14 py-20" bind:this={sections[2]}>
+    <section id="about" class="scroll-mt-24 flex flex-col gap-14 py-20" bind:this={sections[2]}>
         <!-- SKILLS -->
         <div class="flex flex-col gap-2 text-center">
             <h3 class="font-semibold text-3xl sm:text-4xl md:text-5xl">
@@ -127,7 +127,7 @@
         </div>
     </section>
     <!-- SECTION: CONTACT -->
-    <section id="contact" class="flex flex-col gap-4 justify-center items-center py-20 bg-muted border-t-2 border-secondary rounded-b-2xl" bind:this={sections[3]}>
+    <section id="contact" class="scroll-mt-24 flex flex-col gap-4 justify-center items-center py-20 bg-muted border-t-2 border-secondary rounded-b-2xl" bind:this={sections[3]}>
         <h6 class="text-lg sm:text-xl md:text-2xl pb-10">
             Connect with me &darr;
         </h6>
