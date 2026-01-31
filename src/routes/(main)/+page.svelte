@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { writable } from 'svelte/store';
+    import { activeSection } from '$lib/stores';
     import { base } from '$app/paths';
     import avi from '$lib/assets/avi.jpg';
     import { Button, SkillBox, ProjectBox } from '$components';
@@ -14,7 +14,6 @@
     function aviFallback() {aviSrc = avi};
 
     let sections: HTMLElement[] = [];
-    export const activeSection = writable<string>('intro');
 
     onMount(() => {
         // Handle active section during scrolling
