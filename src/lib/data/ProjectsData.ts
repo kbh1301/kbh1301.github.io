@@ -22,10 +22,10 @@ export const projects = [
         features: [
             "Fast application launch directly from .md files",
             "Easy to reach Edit toggle",
-            "Instantly viewable changes in preview",
-            "Optional editor toolbar",
-            "Rearrange lines in editor via draggable line numbers",
-            "Simple, clean interface",
+            "Instantly viewable changes in preview pane with scroll sync",
+            "Simple, clean interface with optional editor toolbar",
+            "Sortable editor lines via draggable line numbers",
+            "Deploys and checks for updates via custom Github Actions pipeline",
         ],
         skills: [
             "Tauri",
@@ -33,6 +33,7 @@ export const projects = [
             "SvelteKit",
             "TypeScript",
             "Tailwind CSS",
+            "Github Actions",
         ],
         repo: siteConfig.links.repo1
     },
