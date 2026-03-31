@@ -2,15 +2,23 @@ export const resume = {
     name: "Kyle Hulvey",
     title: "Software Developer",
     link: "kbh1301.github.io",
+    link2: "linkedin.com/in/kylehulvey",
     email: "kyle.hulvey@gmail.com",
     phone: "(615) 796-0056",
+    location: "Nasvhille, TN",
     summary: "Full-stack software engineer experienced in building tools and systems that eliminate manual workflows, reduce operational errors, and enable teams to move faster. Skilled in end-to-end project ownership, cloud deployments, automation, and database integrations, with strong TypeScript experience.",
+    visibility: {
+        summary: false,
+        employments: true,
+        educations: true,
+        skills: true,
+        projects: false,
+    },
     educations: [
         {
             title: "AAS in Computer Information Technology, Programming Concentration",
-            location: "Columbia State Community College",
-            dates: "May 2019 - Aug 2020",
-            // dates: "",
+            location: "Graduated at Columbia State Community College",
+            dates: "",
             // bullets: [
             //     "Focus on Java and C# development",
             //     "Graduated Magna Cum Laude",
@@ -36,14 +44,16 @@ export const resume = {
                 "Next.js",
                 "SvelteKit",
                 "Tailwind CSS",
+                "Playwright",
             ],
         },
         {
             title: "Back-end",
             bullets: [
                 "Node.js",
-                "ASP.NET Core",
                 "REST APIs",
+                "Prisma ORM",
+                "PostgreSQL",
             ],
         },
         {
@@ -53,6 +63,14 @@ export const resume = {
                 "Azure DevOps",
                 "GitHub",
                 "GitHub Actions",
+                "Vercel",
+            ],
+        },
+        {
+            title: "AI/Developer Tools",
+            bullets: [
+                "GitHub Copilot, Claude",
+                "Spec-driven agentic AI development",
             ],
         },
     ],
