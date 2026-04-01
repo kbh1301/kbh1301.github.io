@@ -7,7 +7,7 @@
         value.startsWith('http://') || value.startsWith('https://') ? value : `https://${value}`;
 </script>
 
-<div class="max-w-[8.5in] mx-auto px-[0.6in] py-[0.5in] bg-white text-[#1a1a1a] font-sans text-[10.5pt] leading-[1.4] box-border">
+<div class="max-w-[8.5in] mx-auto px-[0.6in] py-[0.5in] bg-white text-[#1a1a1a] text-[10.5pt] leading-[1.4] box-border">
     <!-- Header -->
     <header class="text-center mb-[10px] pb-[10px] border-b-[1.5px] border-[#333]">
         <h1 class="text-[22pt] font-bold m-0 mb-[4px] tracking-[0.5px] text-[#111]">{resume.name}</h1>
