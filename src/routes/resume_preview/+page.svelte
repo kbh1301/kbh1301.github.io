@@ -127,13 +127,21 @@
     <title>{siteConfig.name} | Resume</title>
 
     <style>
+        @font-face {
+            font-family: 'ResumeInter';
+            src: url('/fonts/Inter-VariableFont_slnt,wght.ttf') format('truetype');
+            font-style: oblique 0deg 10deg;
+            font-weight: 100 900;
+            font-display: swap;
+        }
+
         html {
             line-height: 1.15;
         }
         body {
             margin: 0;
             background-color: #e0e0e0;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
+            font-family: 'ResumeInter', 'Inter', sans-serif;
         }
         @media print {
             body {
