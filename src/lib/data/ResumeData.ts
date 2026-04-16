@@ -1,7 +1,7 @@
 export const resume = {
     name: "Kyle Hulvey",
     title: "Software Developer",
-    link: "kbh1301.github.io",
+    link: "kyle-hulvey.dev",
     link2: "linkedin.com/in/kylehulvey",
     email: "kyle.hulvey@gmail.com",
     phone: "(615) 796-0056",

@@ -8,7 +8,7 @@ export const siteConfig = {
     authorPhone: "(615) 796-0056",
     authorLinkedIn: "https://www.linkedin.com/in/kylehulvey/",
     authorGitHub: "https://github.com/kbh1301",
-    url: "https://kbh1301.github.io",
+    url: "https://kyle-hulvey.dev",
     ogImage: "https://avatars.githubusercontent.com/u/83362164",
     description:
         `Kyle Hulvey Portfolio - Full Stack Software Developer specializing in TypeScript, React, and Next.js. Explore projects, skills, and experience in web development, automation, and modern software engineering.`,

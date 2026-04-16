@@ -14,7 +14,7 @@
         <div class="flex justify-center flex-wrap gap-y-[6px] gap-x-[18px] text-[10pt] text-[#333]">
             {#if resume.email}<a href="mailto:{resume.email}" class="text-blue-600 underline hover:text-blue-800">{resume.email}</a>{/if}
             {#if resume.phone}<span>{resume.phone}</span>{/if}
-            {#if resume.location}<span>{resume.location}</span>{/if}
+            <!-- {#if resume.location}<span>{resume.location}</span>{/if} -->
             {#if resume.link2}<a href={toExternalUrl(resume.link2)} target="_blank" rel="noopener noreferrer" class="text-blue-600 underline hover:text-blue-800">{resume.link2}</a>{/if}
             {#if resume.link}<a href={toExternalUrl(resume.link)} target="_blank" rel="noopener noreferrer" class="text-blue-600 underline hover:text-blue-800">{resume.link}</a>{/if}
         </div>

@@ -158,7 +158,7 @@
     <meta name="keywords" content={siteConfig.keywords} />
     <meta name="author" content={siteConfig.author} />
     <meta name="robots" content="index, follow" />
-    <link rel="canonical" href="https://kbh1301.github.io/" />
+    <link rel="canonical" href={siteConfig.url} />
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content={siteConfig.ogType} />
@@ -166,7 +166,7 @@
     <meta property="og:title" content="Kyle Hulvey Portfolio - Full Stack Software Developer" />
     <meta property="og:description" content={siteConfig.description} />
     <meta property="og:image" content={siteConfig.ogImage} />
-    <meta property="og:url" content="https://kbh1301.github.io/" />
+    <meta property="og:url" content={siteConfig.url} />
     
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
