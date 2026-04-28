@@ -9,14 +9,23 @@
     import { projects } from '$lib/data/ProjectsData.js';
     import { skills } from '$lib/data/SkillsData.js';
 
-    // Served from /static so it has a stable absolute URL for SEO/OG. The
-    // ?v= query lets us bust caches (Google, social previews, etc.) whenever
-    // the image content changes by bumping AVI_VERSION in site.ts.
-    const aviSrc = `${base}/avi.jpg?v=${AVI_VERSION}`;
+    // Local image (served from /static) is the SSR/initial src so the page
+    // always renders a working avatar — even before hydration. The ?v= query
+    // busts caches when AVI_VERSION is bumped in site.ts.
+    const aviLocal = `${base}/avi.jpg?v=${AVI_VERSION}`;
+    const aviRemote = "https://avatars.githubusercontent.com/u/83362164";
+    let aviSrc = aviLocal;
 
     let sections: HTMLElement[] = [];
 
     onMount(() => {
+        // Prefer the GitHub avatar, but only swap once we know it loads.
+        // This avoids the prerender/hydration race where an `on:error`
+        // handler isn't attached in time to catch a failed initial fetch.
+        const probe = new Image();
+        probe.onload = () => { aviSrc = aviRemote; };
+        probe.src = aviRemote;
+
         // Handle active section during scrolling
         const observer = new IntersectionObserver(
             (entries) => {
@@ -72,7 +81,7 @@
                 />
             </svg>
             <img
-                class="bg-background w-1/2 h-1/2 grayscale p-4 rounded-full aspect-square"
+                class="bg-background w-1/2 h-1/2 grayscale p-4 rounded-full aspect-square object-cover object-center"
                 loading="lazy"
                 src= {aviSrc}
                 alt="Kyle Hulvey - Full Stack Software Developer Portfolio"
