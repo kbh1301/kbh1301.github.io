@@ -1,17 +1,18 @@
 <script lang="ts">
     import { activeSection } from '$lib/stores';
     import { base } from '$app/paths';
-    import avi from '$lib/assets/avi.jpg';
     import { Button, SkillBox, ProjectBox } from '$components';
     import Icon from '@iconify/svelte';
     import { onMount } from 'svelte';
-    import { siteConfig } from "$lib/config/site";
+    import { siteConfig, AVI_VERSION } from "$lib/config/site";
     import { resume } from '$lib/data/ResumeData.js';
     import { projects } from '$lib/data/ProjectsData.js';
     import { skills } from '$lib/data/SkillsData.js';
 
-    let aviSrc = "https://avatars.githubusercontent.com/u/83362164";
-    function aviFallback() {aviSrc = avi};
+    // Served from /static so it has a stable absolute URL for SEO/OG. The
+    // ?v= query lets us bust caches (Google, social previews, etc.) whenever
+    // the image content changes by bumping AVI_VERSION in site.ts.
+    const aviSrc = `${base}/avi.jpg?v=${AVI_VERSION}`;
 
     let sections: HTMLElement[] = [];
 
@@ -74,7 +75,6 @@
                 class="bg-background w-1/2 h-1/2 grayscale p-4 rounded-full aspect-square"
                 loading="lazy"
                 src= {aviSrc}
-                on:error={aviFallback}
                 alt="Kyle Hulvey - Full Stack Software Developer Portfolio"
             />
         </div>

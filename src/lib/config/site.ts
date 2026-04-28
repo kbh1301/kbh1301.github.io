@@ -1,6 +1,12 @@
 // TODO: Update siteConfig
 import { base } from '$app/paths';
 
+// Bump this whenever avi.jpg (in /static) changes so search engines and
+// social platforms re-fetch the image instead of serving a stale cached copy.
+export const AVI_VERSION = "20260428";
+
+const SITE_URL = "https://kyle-hulvey.dev";
+
 export const siteConfig = {
     name: "Kyle Hulvey",
     author: "Kyle Hulvey",
@@ -8,8 +14,8 @@ export const siteConfig = {
     authorPhone: "(615) 796-0056",
     authorLinkedIn: "https://www.linkedin.com/in/kylehulvey/",
     authorGitHub: "https://github.com/kbh1301",
-    url: "https://kyle-hulvey.dev",
-    ogImage: "https://avatars.githubusercontent.com/u/83362164",
+    url: SITE_URL,
+    ogImage: `${SITE_URL}/avi.jpg?v=${AVI_VERSION}`,
     description:
         `Kyle Hulvey Portfolio - Full Stack Software Developer specializing in TypeScript, React, and Next.js. Explore projects, skills, and experience in web development, automation, and modern software engineering.`,
     routes: [
