@@ -168,7 +168,6 @@
     <meta name="author" content={siteConfig.author} />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href={siteConfig.url} />
-    <meta http-equiv="refresh" content={`0; url=${siteConfig.url}`} />
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content={siteConfig.ogType} />
