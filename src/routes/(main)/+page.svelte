@@ -81,7 +81,7 @@
                 />
             </svg>
             <img
-                class="bg-background w-1/2 h-1/2 grayscale p-4 rounded-full aspect-square object-cover object-center"
+                class="bg-background w-1/2 h-1/2 grayscale p-2 rounded-full aspect-square object-cover object-center"
                 loading="lazy"
                 src= {aviSrc}
                 alt="Kyle Hulvey - Full Stack Software Developer Portfolio"
@@ -118,12 +118,15 @@
             {/each}
         </div>
         <!-- RESUME -->
-        <div class="flex flex-col items-center gap-2 text-center py-20">
-            <h6 class="text-lg sm:text-xl md:text-2xl">
-                View and download my latest resume.
-            </h6>
+        <div class="flex flex-col items-center gap-4 text-center pt-20 pb-12 px-6 rounded-2xl">
+            <span class="text-xs sm:text-sm font-semibold text-primary tracking-[0.2em] uppercase">Want the full picture?</span>
+            <h4 class="font-bold text-2xl sm:text-3xl">
+                View my Resume
+            </h4>
+            <p class="text-muted-foreground max-w-sm">
+                Download my latest resume to learn more about my experience and background.
+            </p>
             <Button
-                class="w-fit"
                 href="{base}/generated-pdf/khulvey_resume.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -131,31 +134,49 @@
                 size="lg"
             >
                 <p>Resume</p>
-                <Icon height="1.5rem" icon="bi:arrow-right" />
+                <Icon height="1.25rem" icon="bi:arrow-right" />
             </Button>
         </div>
     </section>
     <!-- SECTION: CONTACT -->
-    <section id="contact" class="scroll-mt-24 flex flex-col gap-4 justify-center items-center py-20 bg-muted border-t-2 border-secondary rounded-b-2xl" bind:this={sections[3]}>
-        <h6 class="text-lg sm:text-xl md:text-2xl pb-10">
-            Connect with me &darr;
-        </h6>
-        <div class="flex flex-col gap-4 justify-center items-center">
-            <p><b class="pr-2">Email</b> kyle.hulvey@gmail.com</p>
-            <p><b class="pr-2">GitHub</b>
-                <a class="text-primary" target="_blank" href={siteConfig.links.github}>
-                    kbh1301<sup><span class="text-xs scale-75 pl-0.5">
-                        <Icon icon="fa6-solid:arrow-up-right-from-square" class="text-xs scale-[75%] inline-block" />
-                    </span></sup>
-                </a>
-            </p>
-            <p><b class="pr-2">LinkedIn</b>
-                <a class="text-primary" target="_blank" href={siteConfig.links.linkedin}>
-                    kylehulvey<sup><span class="text-xs scale-75 pl-0.5">
-                        <Icon icon="fa6-solid:arrow-up-right-from-square" class="text-xs scale-[75%] inline-block" />
-                    </span></sup>
-                </a>
-            </p>
+    <section id="contact" class="scroll-mt-24 flex flex-col gap-6 justify-center items-center py-20 px-6 bg-muted border-t-2 border-secondary rounded-b-2xl" bind:this={sections[3]}>
+        <span class="text-xs sm:text-sm font-semibold text-primary tracking-[0.2em] uppercase">Get in touch</span>
+        <h3 class="font-bold text-3xl sm:text-4xl text-center">
+            Let's Connect
+        </h3>
+        <p class="text-muted-foreground text-center max-w-sm text-base sm:text-lg pb-4">
+            Open to new opportunities and conversations. Drop me a message.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 items-center">
+            <a
+                href="mailto:{siteConfig.authorEmail}"
+                class="inline-flex items-center gap-2.5 px-6 py-3 rounded-xl bg-primary text-primary-foreground font-semibold text-sm sm:text-base shadow hover:opacity-90 transition-opacity"
+            >
+                <Icon icon="lucide:mail" class="h-4 w-4" />
+                {siteConfig.authorEmail}
+            </a>
+        </div>
+        <div class="flex gap-4 pt-2">
+            <a
+                href={siteConfig.links.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg border border-border bg-background text-foreground font-medium text-sm hover:border-primary hover:text-primary transition-colors"
+                aria-label="GitHub profile"
+            >
+                <Icon icon="mdi:github" class="h-5 w-5" />
+                GitHub
+            </a>
+            <a
+                href={siteConfig.links.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg border border-border bg-background text-foreground font-medium text-sm hover:border-primary hover:text-primary transition-colors"
+                aria-label="LinkedIn profile"
+            >
+                <Icon icon="mdi:linkedin" class="h-5 w-5" />
+                LinkedIn
+            </a>
         </div>
     </section>
 </main>

@@ -9,7 +9,7 @@
     let innerWidth = 0;
 </script>
 
-<div class="relative flex flex-col mx-auto w-full text-sm:text-base min-h-screen">
+<div class="relative flex flex-col mx-auto w-full text-sm sm:text-base min-h-screen">
     <!-- SCROLL TO TOP-->
     <div class={"fixed bottom-0 w-fit duration-200 flex pb-10 pl-10 z-[10] " + (
         y > 0 ? ' opacity-full pointer-events-auto' : ' opacity-0 pointer-events-none'
