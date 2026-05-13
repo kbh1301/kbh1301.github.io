@@ -18,19 +18,16 @@ jobs:
           cache: npm
 
       - name: Install dependencies
-        run: |
-          npm install
-          npx playwright install chromium
+        run: npm install
 
       - name: build
         env:
           BASE_PATH: '/${{ github.event.repository.name }}'
-        run: |
-          npm run build
+        run: npm run build
 
       - name: Generate PDF
         run: |
-          npm run generate:pdf
+          docker compose run --rm generate-pdf
           mkdir -p build/generated-pdf
           cp static/generated-pdf/khulvey_resume.pdf build/generated-pdf/
 

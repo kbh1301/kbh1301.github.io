@@ -1,0 +1,14 @@
+services:
+  generate-pdf:
+    image: mcr.microsoft.com/playwright:v1.52.0-noble
+    volumes:
+      - .:/work
+      - pdf_node_modules:/work/node_modules
+    working_dir: /work
+    environment:
+      - PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1
+      - PLAYWRIGHT_BROWSERS_PATH=/ms-playwright
+    command: sh -c "npm install && node build-scripts/generate-pdf.js"
+
+volumes:
+  pdf_node_modules:
