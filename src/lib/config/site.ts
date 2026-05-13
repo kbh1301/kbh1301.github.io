@@ -43,6 +43,7 @@ export const siteConfig = {
     links: {
         github: "https://github.com/kbh1301",
         linkedin: "https://www.linkedin.com/in/kylehulvey/",
+        withList: "https://with-list.app",
         repo1: "https://github.com/kbh1301/md-editor",
         repo2: "https://github.com/kbh1301/barbell-calc",
     },

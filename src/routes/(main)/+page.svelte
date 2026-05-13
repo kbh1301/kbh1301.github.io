@@ -49,7 +49,7 @@
 
 <main class="flex flex-col flex-1 p-4 max-w-[1400px] mx-auto w-full">
     <!-- SECTION: INTRO -->
-    <section id="intro" class="scroll-mt-24 grid grid-cols-1 lg:grid-cols-2 gap-10 py-8 sm:py-14 mt-10" bind:this={sections[0]}>
+    <section id="intro" class="scroll-mt-24 grid grid-cols-1 lg:grid-cols-2 gap-10 py-8 sm:py-14 mt-10 px-4" bind:this={sections[0]}>
         <!-- INTRO TEXT -->
         <div class="flex flex-col items-center lg:items-start lg:justify-center text-center lg:text-left gap-2">
             <h1 class="font-semibold text-5xl md:text-6xl">
@@ -58,7 +58,7 @@
             </h1>
             <h2 class="font-semibold text-lg md:text-xl">Full Stack Software <span class="text-primary">Developer</span></h2>
             
-            <p class="text-foreground/70 py-3 px-0">{resume.summary}</p>
+            <p class="text-foreground/70 py-3 px-0 text-justify">{resume.summary}</p>
 
             <Button class="w-fit" href="{base}/#contact" variant="secondary_plus" size="lg">
                 <p>Contact Me</p>
@@ -89,7 +89,7 @@
         </div>
     </section>
     <!-- SECTION: PROJECTS -->
-    <section id="projects" class="scroll-mt-24 py-20 lg:py-32 flex flex-col gap-24" bind:this={sections[1]}>
+    <section id="projects" class="scroll-mt-24 py-20 lg:py-32 flex flex-col gap-24 px-8" bind:this={sections[1]}>
         <div class="flex flex-col gap-2 text-center">
             <h6 class="text-lg sm:text-xl md:text-2xl">
                 A few of my projects.
@@ -98,9 +98,9 @@
                 Curious to see my work?
             </h3>
         </div>
-        <div class="flex flex-wrap flex-col lg:flex-row justify-center gap-12 lg:gap-10">
+        <div class="flex flex-wrap justify-center gap-20">
             {#each projects as project, i}
-                <ProjectBox {project} allProjects={projects} currentIndex={i} />
+                <ProjectBox {project} allProjects={projects} currentIndex={i} highlight={project.title === 'WithList'} />
             {/each}
         </div>
     </section>

@@ -4,6 +4,9 @@
  */
 
 import { siteConfig } from "$lib/config/site";
+import withlist1 from '$lib/assets/withlist-mrkt-mb-1.png';
+import withlist2 from '$lib/assets/withlist-mrkt-dt-1.png';
+import withlist3 from '$lib/assets/withlist-mrkt-dt-2.png';
 import mdeditor1 from '$lib/assets/mdeditor1.jpg';
 import mdeditor2 from '$lib/assets/mdeditor2.jpg';
 import mdeditor3 from '$lib/assets/mdeditor3.jpg';
@@ -13,6 +16,36 @@ import gcalautomation1 from "$lib/assets/gcalautomation1.jpg";
 import gcalautomation2 from "$lib/assets/gcalautomation2.jpg";
 
 export const projects = [
+    {
+        title: "WithList",
+        icon: "raphael:iphone",
+        image_main: withlist1,
+        images: [withlist2, withlist3],
+        overview: "Collaborative full-stack app for tracking, rating, and sharing experiences across personal and group lists.",
+        features: [
+            "Create shared groups and invite members with tokenized invite links",
+            "Manage list items with status, ratings, comments, and tags",
+            "Use optimistic UI updates with React Query cache invalidation",
+            "Track activity feed events with dismiss, undo, and completion flows",
+            "Persist per-user sort and filter preferences across sessions",
+            "Run full test coverage with unit, integration, and Playwright E2E",
+        ],
+        skills: [
+            "Next.js",
+            "TypeScript",
+            "React",
+            "Prisma",
+            "PostgreSQL",
+            "SQLite",
+            "Better Auth",
+            "OAuth",
+            "React Query",
+            "Tailwind CSS",
+            "Playwright",
+            "Vercel",
+        ],
+        site: siteConfig.links.withList,
+    },
     {
         title: "Markdown Editor",
         icon: "fa6-brands:markdown",
