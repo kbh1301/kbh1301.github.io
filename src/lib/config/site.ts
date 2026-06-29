@@ -44,7 +44,7 @@ export const siteConfig = {
         github: "https://github.com/kbh1301",
         linkedin: "https://www.linkedin.com/in/kylehulvey/",
         withList: "https://with-list.app",
-        repo1: "https://github.com/kbh1301/md-editor",
+        repo1: "https://github.com/kbh1301/md-editor-releases",
         repo2: "https://github.com/kbh1301/barbell-calc",
     },
     keywords: `Kyle Hulvey portfolio, Kyle Hulvey, portfolio, web developer, software engineer, full stack developer, TypeScript developer, React developer, Next.js developer`,
