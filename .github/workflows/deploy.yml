@@ -33,7 +33,7 @@ jobs:
 
       - name: Generate PDF
         run: |
-          docker compose run --rm generate-pdf
+          HOST_UID=$(id -u) HOST_GID=$(id -g) docker compose run --rm generate-pdf
           mkdir -p build/generated-pdf
           cp static/generated-pdf/khulvey_resume.pdf build/generated-pdf/
 
