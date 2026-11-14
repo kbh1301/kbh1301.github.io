@@ -42,6 +42,22 @@ function serveStatic(root) {
     });
 }
 
+function validatePdf(pdf) {
+    const source = pdf.toString('latin1');
+    const pageCount = (source.match(/\/Type\s*\/Page\b/g) || []).length;
+    const fontNames = [...source.matchAll(/\/FontName \/([^\s]+)/g)].map((match) => match[1]);
+
+    if (pageCount !== 1) {
+        throw new Error(`Expected a one-page PDF, found ${pageCount} pages`);
+    }
+    if (!fontNames.some((fontName) => fontName.includes('LiberationSans'))) {
+        throw new Error(`Expected bundled LiberationSans fonts, found: ${fontNames.join(', ')}`);
+    }
+    if (!source.includes('/ToUnicode')) {
+        throw new Error('Generated PDF has no ToUnicode maps for text extraction');
+    }
+}
+
 (async () => {
     const buildDir = path.resolve('build');
     const server = await serveStatic(buildDir);
@@ -51,6 +67,26 @@ function serveStatic(root) {
     const page = await browser.newPage();
 
     await page.goto(`http://127.0.0.1:${port}/resume_preview.html`, { waitUntil: 'networkidle' });
+    await page.emulateMedia({ media: 'print' });
+    const fontState = await page.evaluate(async () => {
+        const faces = [
+            '400 10pt "ResumeSans"',
+            '700 10pt "ResumeSans"',
+            'italic 400 10pt "ResumeSans"',
+            'italic 700 10pt "ResumeSans"',
+        ];
+        await Promise.all(faces.map((face) => document.fonts.load(face, 'Aa')));
+        await document.fonts.ready;
+        return {
+            checks: faces.map((face) => document.fonts.check(face, 'Aa')),
+            statuses: [...document.fonts]
+                .filter((font) => font.family === 'ResumeSans')
+                .map((font) => font.status),
+        };
+    });
+    if (fontState.checks.some((loaded) => !loaded) || fontState.statuses.some((status) => status !== 'loaded')) {
+        throw new Error(`ResumeSans did not load before PDF generation: ${JSON.stringify(fontState)}`);
+    }
 
     const pdf = await page.pdf({
         format: 'Letter',
@@ -63,6 +99,7 @@ function serveStatic(root) {
         }
     });
 
+    validatePdf(pdf);
     fs.writeFileSync(OUTPUT, pdf);
     await browser.close();
     server.close();

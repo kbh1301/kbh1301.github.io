@@ -5,7 +5,7 @@
 	"packageManager": "pnpm@11.1.3",
 	"scripts": {
 		"dev": "node scripts/dev.mjs",
-		"generate:pdf": "pnpm build && docker compose run --rm generate-pdf",
+		"generate:pdf": "pnpm build && HOST_UID=$(id -u) HOST_GID=$(id -g) docker compose run --rm generate-pdf",
 		"shadcn:add": "pnpm exec shadcn-svelte@0.14 add",
 		"build": "vite build",
 		"deploy": "pnpm build && pnpm exec gh-pages -d build -t true",
@@ -15,6 +15,7 @@
 	},
 	"devDependencies": {
 		"@iconify/svelte": "^4.0.2",
+		"@playwright/cli": "^0.1.19",
 		"@sveltejs/adapter-auto": "^3.0.0",
 		"@sveltejs/kit": "^2.0.0",
 		"@sveltejs/vite-plugin-svelte": "^4.0.4",

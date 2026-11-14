@@ -24,3 +24,6 @@ vite.config.ts.timestamp-*
 
 # Generated PDFs
 /static/generated-pdf/*.pdf
+!/static/generated-pdf/khulvey_resume.pdf
+# Playwright CLI output (may contain credentials)
+.playwright-cli/
