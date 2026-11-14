@@ -87,7 +87,9 @@
             <Dialog.Overlay />
         </Dialog.Close>
     </Dialog.Portal>
-    <Dialog.Content class="w-full max-w-[95vw] sm:max-w-[90vw] lg:max-w-4xl xl:max-w-5xl 2xl:max-w-6xl h-[90vh] overflow-hidden p-0 flex flex-col [&>*:last-child]:hidden">
+    <Dialog.Content
+        class="w-full max-w-[95vw] sm:max-w-[90vw] lg:max-w-4xl xl:max-w-5xl 2xl:max-w-6xl top-2 bottom-2 h-[calc(100dvh-1rem)] translate-y-0 overflow-hidden p-0 flex flex-col [&>*:last-child]:hidden sm:top-1/2 sm:bottom-auto sm:h-[90vh] sm:max-h-[calc(100dvh-2rem)] sm:translate-y-[-50%]"
+    >
         <Dialog.Header class="relative shrink-0 px-4 sm:px-6 md:px-8 py-3 sm:py-4 flex flex-col">
             <Dialog.Close
                 class="absolute right-2 top-2 sm:right-3 sm:top-3 rounded-md p-1.5 sm:p-2 text-muted-foreground hover:bg-muted hover:text-foreground focus:outline-none transition-colors touch-manipulation min-w-[2.25rem] min-h-[2.25rem] sm:min-w-[2.5rem] sm:min-h-[2.5rem] flex items-center justify-center"
